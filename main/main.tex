@@ -1,0 +1,133 @@
+\documentclass[a4paper,11pt,twoside,openright,leqno]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[top=4.3cm,bottom=3.2cm,inner=3.2cm,outer=2.7cm]{geometry}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+%\usepackage[pdftex]{graphicx} %per poter inserire le figure
+%\usepackage{xspace}
+%\usepackage{tabularx}
+%\usepackage{indentfirst}
+%\usepackage{subfigure}
+%\usepackage[small]{caption}
+%\usepackage{eucal}
+%\usepackage{eso-pic}
+%\usepackage{url}
+%\usepackage{booktabs}
+%\usepackage{afterpage}
+%\usepackage{parskip}
+%\usepackage{listings}
+%\usepackage{textcomp}
+%\usepackage{cite}
+%\usepackage{multirow}
+%\usepackage{setspace}
+%\renewcommand{\baselinestretch}{1.1} 
+\usepackage{subfiles}
+%\usepackage{pdfpages}
+
+%\usepackage{tgadventor}
+
+%	HYPERLINKS
+\usepackage[linktoc=all,colorlinks=true,linkcolor={blue!70!black},citecolor={blue!60!black}]{hyperref}
+%\usepackage[hidelinks]{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\fancyhf{}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyhead[LE,RO]{\thepage}
+
+%    TO-DO NOTES
+%\PassOptionsToPackage{disable}{todonotes}
+\usepackage[colorinlistoftodos,textsize=tiny]{todonotes}
+
+\usepackage{enumitem}
+\setlist{nosep}
+
+%    BIBLIOGRAPHY
+\usepackage[backend=biber, style=alphabetic, sorting=nyt, maxbibnames=99]{biblatex}
+\addbibresource{../biblio.bib}
+
+%    ENVIRONMENT FOR EQUATION
+\usepackage{xparse}
+\NewDocumentCommand \deq { o m }{
+\begin{equation}
+\begin{aligned}
+{}#2
+\IfNoValueF{#1}{\label{#1}}
+\end{aligned}
+\end{equation}
+}
+
+%    ENVIRONMENTS
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{example}[equation]{Example}
+\newtheorem{xca}[equation]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Remark}
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+%APPENDICIE
+\usepackage[toc]{appendix}
+\renewcommand{\appendixtocname}{Appendice}
+\renewcommand{\appendixname}{Appendice}
+\renewcommand{\appendixpagename}{Appendice}
+
+%	COMMANDS
+\input{../commands.tex}
+
+\makeatletter
+\newcommand{\mathleft}{\@fleqntrue\@mathmargin0pt}
+\newcommand{\mathcenter}{\@fleqnfalse}
+\makeatother
+
+\begin{document}
+
+\pagenumbering{roman}
+
+%    Table of contents
+\setcounter{tocdepth}{3}
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\thispagestyle{empty}
+\clearpage\null\newpage
+\thispagestyle{empty}
+
+
+%    Include main chapters here.
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\subfile{../subfiles/chap1}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+%\subfile{../subfiles/chap2}
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\appendix
+%	Include appendix chapters here
+%\begin{appendices}
+%\subfile{}
+%\end{appendices}
+
+%	Bibliography
+\nocite{*}
+\printbibliography[heading=bibintoc]
+
+\end{document}
+
+
+
+
+
+

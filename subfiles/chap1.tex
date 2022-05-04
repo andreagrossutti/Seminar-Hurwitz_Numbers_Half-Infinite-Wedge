@@ -1,0 +1,252 @@
+\documentclass[../main/main.tex]{subfiles}
+\begin{document}
+
+\chapter{Hurwitz Numbers}
+
+\section{Maps of \rss\ and \hnn}
+
+In the following we will assume the \rss\ that we will consider to be \cpt\ and connected. Let $f\colon X\to Y$ be a non-\const\ \holo\ map of \rss\ (hence surjective\footnote{\cite[Thm. 4.3.1]{CM}})
+\todo{Check where connectedness is needed.}
+
+\begin{definition}
+	\begin{itemize}
+		\item The \emph{ramification index} of $f$ at $x\in X$ is the integer $k_x\in\Z_{\geq1}$ \st $f$ is locally of the form $z^k_x$, where $z$ is a local coordinate centered in $x$. 
+		\item The \emph{differential length} of $f$ at $x\in X$ is $\nu_x=k_x-1$.
+		\item A point $x\in X$ \st $\nu_x>0$ is called a \emph{ramification point}. The \emph{ramification locus} of $f$ is the set of its ramification points. If $\n_x=0$ we say that $f$ is \emph{unramified} at $x$. If $\n_x=1$ we say that $f$ has \emph{simple ramification} at $x$. 
+		\item If $x\in X$ is a ramification point, then $f(x)\in Y$ is called a \emph{branch point}. The \emph{branch locus} $B_f$ of $f$ is the set of its branch points.
+	\end{itemize}
+\end{definition}
+
+The ramification locus and branch locus are finite sets of $X$ and $Y$ respectively.\footnote{\cite[Lemma 4.2.5.]{CM}} We assume $f$ non-\const. For any $y,y'\in Y\setminus B_f$ we have $|\inv f(y)|=|\inv f(y')|$.\footnote{\cite[Thm. 4.3.3]{CM}} We call \emph{degree} of $f$ the integer $\deg f\defeq|\inv f(y)|$ for any $y\in Y\setminus B_f$. Then:
+
+\begin{theorem}[Riemann-Hurwitz {\cite[Thm. 4.4.1]{CM}}]
+	Let $g_X$ and $g_Y$ denote the genus of $X$ and $Y$ respectively. Then
+	\deq{\underbrace{2g_X-2}_{\c(X)}=(\underbrace{2g_Y-2}_{\c(Y)})\deg f+\sum_{x\in X}\nu_x}
+\end{theorem}
+
+We also have that for any $y\in Y$
+\deq{\deg f=\sum_ik_{x_i}}
+where $i$ labels the elements of $\inv f(y)=\{x_1,\ldots,x_n\}$. Denote $d\defeq\deg f$. 
+
+\begin{definition}
+	Let $y\in Y$, $\inv f=\{x_1,\ldots,x_n\}$. We call \emph{ramification profile} of $f$ at $y$ the partition of $d$ given by $(k_{x_1},\ldots,k_{x_n})$. We say that $f$ is \emph{unramified} / \emph{simply ramified} / \emph{fully ramified} if its ramification profile is $(1,\ldots,1)$ / $(2,1,\ldots,1)$ / $(d)$ respectively.
+\end{definition}
+
+\begin{definition}
+	Two \holo\ maps of \rss\ $f\colon X\to Y$ and $\ti X\to Y$ are called isomorphic if there is an \emph{isomorphism} of \rss\ $\f\colon X\to\ti X$ \st $f=g\circ \f$. 
+	
+	An \emph{automorphism} of $f\colon X\to Y$ is an isomorphism $\p\colon X\to X$ \st $f=f\circ \p$. The group of automorphisms of $f$ is denoted $\Aut(f)$. 
+
+\end{definition}
+
+\begin{definition}
+	Let $Y$ be a connected \cpt\ \rs\ of genus $g$, $B=\{b_1,\ldots,b_n\}\subset Y$ finite subset, $d\in\Z_{\geq1}$, $\q_1,\ldots,\q_n\vdash d$. We define the \emph{(degree $d$) connected Hurwitz number} to be 
+	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{[f]}\frac1{|\Aut(f)|}}
+	and the \emph{(degree $d$) Hurwitz number} to be
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{[f]}\frac1{|\Aut(f)|} \label{eq:disc-H-numb}}
+	where both sums runs over isomorphism classes of \holo\ maps $f\colon X\to Y$ \st
+	\begin{itemize}
+		\item $X$ is a \cpt\ \rs\ of genus $h$\footnote{For $X$ disconnected, its genus is defined by $\c=2g-2$, where the Euler characteristic $\c$ is naturally additive under disjoint unions. The Riemann-Hurwitz formula then applies identically in also for $X$ disconnected.}
+		\item the branch locus of $f$ is $B$
+		\item the ramification profile of $f$ at $b_i$ is $\q_i$
+	\end{itemize}
+	In the case of connected Hurwitz numbers we further require $X$ to be connected. Numbers \eqref{eq:disc-H-numb} are also called \emph{disconnected Hurwitz number} since $X$ is allowed to be disconnected.
+\end{definition}
+
+Note that for any $f\colon X\to Y$ as in the definition above we have 
+\deq{\sum_{x\in X}\n_x=\sum_{i=1}^n(d-\ell(\q_i))=nd-\sum_{i=1}^n\ell(\q_i)}
+where $\ell(\q_i)$ denotes the length of the partition $\q_i$ (\ie the number of cycles in $\q_i$), so due to Riemann-Hurwitz theorem we have 
+\deq{2h-2=(2g-2)d+nd-\sum_{i=1}^n\ell(\q_i) \label{eq:RHgenus}}
+In particular the ramification profile of $f:X\to Y$ and the genus of $Y$ uniquely determines the genus of $X$. 
+
+\section{Maps of \rss\ as ramified covers}
+
+Maps of \rss\ as above can be regarded as ramified covers:
+
+\begin{definition}
+	A \emph{ramified cover} is a continuous function between compact topological surfaces $f\colon X\to Y$ \st there is a finite set $B\subset Y$ and
+	\begin{itemize}
+		\item$\inv f(B)$ is finite,
+		\item $p\colon X\setminus\inv f(B)\to Y\setminus B$ is a covering.
+	\end{itemize}
+\end{definition}
+
+Vice-versa, we have
+
+\begin{theorem}[Riemann's Existence Thm. {\cite[Thm. 6.2.2]{CM}}] 
+	Let $Y$ \cpt\ \rs, $X^0$ topological surface, $\{b_1,\ldots,b_n\}\subset Y$ finite subset, $f^0\colon X^0\to Y\setminus\{b_1,\ldots,b_n\}$ covering of finite degree. Then there exists a unique (up to isomorphisms) \cpt\ \rs\ $X$ \st
+	\begin{itemize}
+		\item $X^0$ is a dense subset of $X$,
+		\item $f^0$ extends to a \holo\ map of \rss\ $f\colon X\to Y$.
+	\end{itemize}
+\end{theorem}
+
+\begin{definition}
+	Let $y_0\in Y\setminus B_f$ and fix a bijection $\inv f(y_0)\cong\{1,\ldots,d\}$. The ramified cover $f\colon X\to Y$ determines a group homomorphism 
+	\deq{
+		\F\colon\u_1(Y\setminus B_f,y_0)\to S_d\tcomma \g\mapsto\s_\g
+	}
+	called \emph{monodromy representation}.
+\end{definition}
+
+Now consider $b\in B_f$ and $\g\in\u_1(Y\setminus B_f,y_0)$ simple loop winding once around $b$ (and with zero winding number around the other branch points). If the ramification profile of $f$ at $b$ is $\q=(k_1,\ldots,k_l)$, then $\s_\g$ has cycle type $\q$ (to see this recall that the local expression of $f$ around ramification points is $z^k$and consider a circle around $y_0$ of unit radius in the chart).
+
+\begin{definition}
+	Let $Y$ be a connected \rs\ of genus $g$, $y_0,b_1,\ldots,b_n\in Y$ points, $d\in\Z_{\geq1}$ and $\q_1,\ldots,\q_n\vdash d$. A \emph{monodromy representation of type} $(g,d,\q_1,\ldots,\q_n)$ is a group homomorphism $\F\colon\u_1(Y\setminus\{b_1,\ldots,b_n\},y_0)\to S_d$ \st if $\g_k$ is a small loop around $b_k$ then $\F(\g_k)$ has cycle type $\q_k$.
+	
+	If moreover the subgroup $\im \F\subset S_d$ acts transitively on $\{1,2,\ldots,d\}$ we say that $\F$ is a \emph{connected monodromy representation}.
+	
+\end{definition}
+
+We obtained that a degree $d$ map $f\colon X\to Y$ between \cpt\ connected \rss\ \st the ramification profile over each branch point is $\q_i$ gives rise to a connected monodromy representation $\F$ of type $(g_Y,d,\q_1,\ldots,\q_n)$. If we let $X$ to be non connected, then the monodromy representation may not be connected anymore, more precisely: the monodromy representation is connected \tiff $X$ is connected.\footnote{For further details: \cite[§§7.1]{CM}.} We also have that isomorphic maps give the same monodromy representation. 
+
+Conversely:
+
+\begin{theorem}[{\cite[Thm. 7.2.2]{CM}}]
+	Let $Y$ be a \rs\ of genus $g$, $\F$ a monodromy representation of type $(g,d,\q_1,\ldots,\q_n)$, $B=\{b_1,\ldots,b_n\}\subset Y$ a finite subset. Then exists a \holo\ map of \rs\ covering $Y$ with branch locus $B$ whose associated monodromy is $F$. Such map is unique up to isomorphisms. 
+\end{theorem}
+
+Our discussion leads to a bijection between isomorphisms classes of \holo\ maps with a given ramification profile and monodromy representations. More precisely:
+
+\begin{theorem}[{\cite[Thm. 7.3.1, Thm. 7.3.2]{CM}}]\label{thm:CM7.3.1}
+	Let $M^\circ$ (resp $M^\bullet$) be the set of connected monodromy representations (resp. monodromy representations) of type $(g,d,\q_1,\ldots,\q_n)$. Then
+	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\circ|}{d!}}
+	and
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\bullet|}{d!}}
+	where $h$ is determined by \eqref{eq:RHgenus}. 
+\end{theorem}
+
+Although the information carried by connected Hurwitz numbers is usually more interesting for geometrical purposes, it turns out that it is easier to compute the (possibly disconnected) Hurwitz numbers. We will see later how it is possible to recover the connected Hurwitz numbers from the disconnected ones. 
+
+We mention that using some ``degeneration formulas'' (which heuristically correspond to shrink the \rs\ Y producing nodal curves) all disconnected degree $d$ Hurwitz numbers are determined in therms of Hurwitz numbers of the form $H^\bullet_{h\overset d\to0}(\q_1,\q_2,\q_3)$.\footnote{\cite[Thm. 7.5.3]{CM}} For this (and other) reason we later restrict our discussion to the case $g=0$. 
+
+\section{Interlude: representation theory of $S_d$}
+
+Using theorem \ref{thm:CM7.3.1} the problem of computing degree $d$ Hurwitz numbers can be translated into a problem in representation theory of the symmetric group $S_d$. In order to show this we need some facts about representation theory (see \cite[Part I]{FH} and \cite[§8]{CM} for more details). 
+
+\begin{definition}
+	The \emph{group algebra} of the symmetric group $S_d$ is the complex algebra generated by the elements of $S_d$, that is
+	\deq{\C[S_d]:=\left\{\sum_{\s\in S_d}a_\s\s\ \big|\  a_\s\in\C\right\}}
+	with operations
+	\deq{\sum_{\s\in S_d}a_\s\s+\sum_{\s\in S_d}b_\s\s=\sum_{\s\in S_d}(a_\s+b_\s)\s}
+	\deq{\bigg(\sum_{\s\in S_d}a_\s\s\bigg)\cdot\bigg(\sum_{\s\in S_d}b_\s\s\bigg)=\sum_{\s\in S_d}\sum_{\s'\in S_d}a_\s b_{\s'}(\s\cdot\s')\label{eq:formal-expansion}}
+	\deq{t\cdot\bigg(\sum_{\s\in S_d}a_\s\s\bigg)=\sum_{\s\in S_d}(t a_\s)\s}
+	where $t\in\C$. Expression in the \rhs of \eqref{eq:formal-expansion} (before multiplying $\s$ and $\s'$) is called formal expansion of the product.
+	
+	We define \emph{class algebra} of $S_d$ the center of the group algebra
+	\deq{	\cZ\C[S_d]&=\{x\in\C[S_d]\ \big|\ yx=xy\tforall y\in\C[S_d]\}}
+\end{definition}
+
+The following functions are very important for our discussion:
+
+\begin{definition}
+	A \emph{class function} on $S_d$ is a map $\a\colon S_d\to\C$ which is constant on conjugacy classes, i.e. $\forall h\in S_d$ we have $\a(\inv hgh)=\a(h)$. Let $\C_\tclass$ denote the vector space of class functions on $S_d$. We define on $\C_\tclass$ the following Hermitian inner product
+	\deq{(\a,\b):=\frac1{d!}\sum_{\s\in S_d}\a(\s)\overline{\b(\s)}=\frac1{d!}\sum_{C\subset S_d}|C|\a(C)\overline{\b(C)} \label{eq:inner-prod-cfunc}}
+ 	for any $\a,\b\in \C_\tclass$, where $\sum_C$ runs over the conjugacy classes of $S_d$. 
+\end{definition}
+
+We have the following
+
+\begin{lemma}[{\cite[§§3.4]{FH}}]
+	\deq{\cZ\C[S_d]=\left\{\sum_{\s\in S_d}\a(\s)\s\ \big|\  \a\in\C_\tclass\right\}}
+\end{lemma}
+
+For $\q\vdash d$ denote by $C_\q\subset S_d$ the conjugacy class corresponding to all elements of cycle type $\q$.  Let $\a_\q\colon S_d\to\C$ the class function which takes value 1 on elements of $C_\q$ and 0 otherwise. It is clear that the set $\{\a_\q\ |\ \q\vdash d\}$ gives a basis of $\cclass$. Let $c_\q\in\cZ\C[S_d]$ denote the corresponding element in the center of the group algebra, that is 
+\deq{c_\q=\sum_{s\in S_d}\a_\q(\s)\s=\sum_{\s\in C_\q}\s}
+We get that $\{c_\q\ |\ \q\vdash d\}$ form a basis of $\cZ\C[S_d]$ as a complex vector space, called \emph{conjugacy class basis}
+\deq{\cZ\C[S_d]=\bigoplus_{\q\vdash d}\la c_\q\ra_\C}
+Note that the identity element $c_e$ in $\cZ\C[S_d]$ corresponds to the partition $e=(1,\ldots,1)$. 
+
+
+A (complex) representation of $S_d$ is a homomorphism $\r\colon S_d\to\Aut(V_\r)$ making the finite dimensional complex vector space $V_\r$ into a $S_d$-module. We define the dimension of the representation to be $\dim \r:=\dim_\C V_\r$. Given any representation $\r$, notice that this extends to a homomorphism $\C [S_d]\to\End(V_\r)$, making $V_\r$ into a $\C [S_d]$-module. 
+
+Representations of $S_d$ are described by their characters, which are defined as follows:
+
+\begin{definition}
+	Let $\r$ be a representation of $S_d$. The \emph{character} of $\r$ is the class function $\c_\r\in\cclass$ defined by
+	\deq{\c_\r(\s):=\tr(\r(\s))}
+\end{definition}
+
+The fact that $\c_\r$ is a class function follows from the cyclicity of the trace. From the definition it follows that $\c_\r$ does not depend on the choice of basis for $V_\r$ (due to the corresponding property of the trace) and that $\c_\r(e)=\dim \r$ (since $\r(e)=\id$). It is also easy to see that $\c_{\r_1\oplus\r_2}=\c_{\r_1}+\c_{\r_2}$. 
+
+
+
+
+A representation $\r$ is \emph{irreducible} if $V_\r$ does not contain any nontrivial $S_d$-submodules. For complex representation we have the following fundamental result
+\begin{theorem}[{\cite[Thm. 2.12]{FH}}]
+	In terms of the inner product \eqref{eq:inner-prod-cfunc} the characters of the irreducible representations of $S_d$ are orthonormal:
+	\deq{(\c_{\r_1},\c_{\r_2})=\begin{cases}1\tif \r_1\cong \r_2\\0\tif \r_1\not\cong \r_2\end{cases}}
+	where $\r_1,\r_2$ are irreducible representations.  
+\end{theorem}
+
+Any complex representation decomposes uniquely into the direct sum of irreducible representations. More precisely, we have
+\deq{R=\bigoplus_\r V_\r^{\oplus\dim V_\r}}
+where $R$ is the obvious representation of $S_d$ on $\C[S_d]$, called \emph{regular representation}, while the (big) direct sum runs over all the irreducible representations of $S_d$. This also implies the following isomorphism of algebras
+\deq{\C[S_d]\cong\bigoplus_\r\End(V_\r)}
+which is defined extending $S_d\to\bigoplus_\r\End(V_\r)$ by linearity.
+
+\begin{theorem}[{\cite[Thm. 4.3]{FH}}]
+	To each partition $\l\vdash d$ corresponds a unique irreducible representation $V_\l$ of $S_d$. The corresponding character, denoted $\c^\l$, is given by Frobenius formula \cite[Eq. 4.10]{FH}. In particular $\c^\l$ is a real class function.
+\end{theorem}
+
+By dimensional arguments, we get that characters of irreducible representations form another basis of $\cclass$. Moreover, denoting
+\deq{e_\l:=\sum_{\s\in S_d}\c^\l(\s)\s}
+we get that $\{e_\l\ |\ \l\vdash d\}$ gives another basis of $\cZ\C[S_d]$
+\deq{\cZ\C[S_d]=\bigoplus_{\l\,\vdash \,d}\la e_\l\ra_\C}
+which will be called \emph{character basis} or \emph{idempotent basis}. Indeed from characters orthogonality (and the fact that $\overline{\c^\l}=\c^\l$) we get
+\deq{e_{\l_i}\cdot e_{\l_j}=\begin{cases}e_{\l_i}\tif e_{\l_i}=e_{\l_j}\\0\quad\text{otherwise}\end{cases}}
+Since $\cZ\C[S_d]$ admits a basis of idempotent elements, we say that it is a \emph{semisimple algebra}. The formulas for the change of basis are given by the characters themselves
+\deq{e_\l=\frac{\dim \l}{d!}\sum_{\q\,\vdash \,d}\c^\l(C_\q)c_\q
+\quad\tand\quad
+c_\q=|C_\q|\sum_{\l\,\vdash\, d}\frac{\c^\l(C_\q)}{\dim\l}e_\l\label{eq:change-basis-class-alg}}
+where $\dim \l:=\dim V_\l$. In order to simplify the notation, set also $\c^\l_\q:=\c^\l(C_\q)$. 
+
+\section{Burnside's formula}
+
+Now we are ready to use the notions that we introduced in order to rewrite the expression of Hurwitz numbers in terms of characters of the irreducible representations of $S_d$. Existence of a idempotent basis for $\cZ\C[S_d]$ and formulas \eqref{eq:change-basis-class-alg} will be crucial. 
+
+Recall that 
+\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\bullet|}{d!}}
+where $M^\bullet$ is the set of monodromy representations of type $(g,d,\q_1,\ldots,\q_r)$ where $\q_1,\ldots,\q_n$ are partitions of $d$. 
+
+In order to account for the case $g\neq0$ one needs 
+\begin{definition}
+	Let $d\in\Z_{\geq1}$, $\q\vdash d$. Denote by $\x(\q)$ the centralizer of $C_\q$. We define the \emph{kommutator} to be the element
+	\deq{\mathfrak K:=\sum_{\q\vdash d}|\x(\q)|c_\q^2\in\cZ\C[S_d]}
+\end{definition}
+
+Then we have the following
+\begin{proposition}[{\cite[Prop. 9.2.3]{CM}}]
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac1{d!}[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}}
+	where $[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}$ denotes the coefficient of $c_e$ after writing the product $\mathfrak K^gc_{\q_n}\ldots c_{\q_2}c_{\q_1}$ as a linear combination of the basis elements $c_\q\in\cZ\C[S_d]$. As usual $h$ is determined by Riemann-Hurwitz formula. 
+\end{proposition}\todo{Maybe add proof for case $g=0$.}
+
+By changing basis from the conjugacy basis to the idempotent basis we get
+
+\begin{theorem}[Burnside's Character Formula {\cite[Thm. 9.3.1]{CM}}]
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{j=1}^nf_{C_j}(\l)}
+	where
+	\deq{f_{C_j}(\l):=|C_j|\frac{\c^\l(C_j)}{\dim \l}}
+	and $C_j:=C_{\q_j}$.
+\end{theorem}
+
+Recall that from the change of basis formula, 
+\deq{c_\q=\sum_{\l\,\vdash\,d}f_{C_\q}(\l)e_\l}
+From Bournside's formula we see that such coefficients for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
+
+
+\section{The generating function}
+
+In the following we will restrict ourself to the case of$g=0$. Recall that there are some degeneration formulas which allows to express all the Hurwitz numbers in terms of those for $g=0$. For a similar discussion for arbitrary $g$ see \cite[§10]{CM}. We will follow instead \cite[§§2.2,2.3]{O1}. 
+
+For $g=0$ the Riemann-Hurwitz formula implies
+\deq{2h-2=-2d+nd-\sum_{i=1}^n\ell(\q_i) \label{eq:RHgenus0}}
+and since this fixes $h$ in terms of $(d,\q_1,\ldots,\q_n)$, we simply denote
+\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{j=1}^nf_{C_j}(\l)}
+Say that $b$ of the $n$ branch points have simple ramification, \ie $\q=(2)$. We denote
+\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b}):=H^\bullet_d(\q_1,\ldots,\q_{n-b},\underbrace{(2),\ldots,(2)}_{\text{$b$ times}})}
+Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
+
+Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. 
+
+\end{document}
