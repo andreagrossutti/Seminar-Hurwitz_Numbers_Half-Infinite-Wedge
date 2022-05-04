@@ -224,10 +224,10 @@ Then we have the following
 By changing basis from the conjugacy basis to the idempotent basis we get
 
 \begin{theorem}[Burnside's Character Formula {\cite[Thm. 9.3.1]{CM}}]
-	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{j=1}^nf_{C_j}(\l)}
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{i=1}^nf_{C_j}(\l)}
 	where
-	\deq{f_{C_j}(\l):=|C_j|\frac{\c^\l(C_j)}{\dim \l}}
-	and $C_j:=C_{\q_j}$.
+	\deq{f_{C_i}(\l):=|C_i|\frac{\c^\l(C_i)}{\dim \l}}
+	and $C_i:=C_{\q_i}$.
 \end{theorem}
 
 Recall that from the change of basis formula, 
@@ -242,11 +242,55 @@ In the following we will restrict ourself to the case of$g=0$. Recall that there
 For $g=0$ the Riemann-Hurwitz formula implies
 \deq{2h-2=-2d+nd-\sum_{i=1}^n\ell(\q_i) \label{eq:RHgenus0}}
 and since this fixes $h$ in terms of $(d,\q_1,\ldots,\q_n)$, we simply denote
-\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{j=1}^nf_{C_j}(\l)}
-Say that $b$ of the $n$ branch points have simple ramification, \ie $\q=(2)$. We denote
-\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b}):=H^\bullet_d(\q_1,\ldots,\q_{n-b},\underbrace{(2),\ldots,(2)}_{\text{$b$ times}})}
-Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
+\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_j}(\l)}
+Let $b$ be the number of branch points which have simple ramification, \ie $\q=(2)$. We denote
+\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b}):=H^\bullet_d(\q_1,\ldots,\q_{n-b},\underbrace{(2),\ldots,(2)}_{\text{$b$ times}})=\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{n-b}f_{C_j}(\l)}
+where $f_2:=f_{C_{(2)}}$. Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
 
-Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. 
+Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. Fix $m\in\Z_{\geq0}$ to be the number of branch points with non-simple ramification profile. Then
+
+\begin{definition}
+	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. Then we define the \emph{Hurwitz potential} to be
+	\deq{\fH^\bullet(p_{i,j},q,\b):=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\,\vdash d}\cdots\sum_{\q_{m}\,\vdash d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
+	where for $\q=(l_1,\ldots,l_k)\vdash d$ we have
+	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\label{eq:power-sum-sym-pol}}
+	An analogous definition holds for the \emph{connected Hurwitz potential} $\fH^\circ$. 
+\end{definition}
+
+For fixed $i$, the polynomials of the form $p^\q$ for all partitions $\q\vdash d$ form a basis for the space of all homogeneous polynomials of degree $d$ in $d$ variables with rational coefficients. They are called \emph{power sum polynomials}. Therefore, given $\fH$, it can be expanded uniquely as in \eqref{eq:Hur-pot-0} giving all the Hurwitz numbers. For more details on power sum polynomials see \cite[§A]{FH} or \cite[Part I]{M}. 
+
+We see that in the expansion of the Hurwitz potential
+\begin{itemize}
+	\item $q$ keeps track of the degree $d$
+	\item $\b$ keeps track of the number of simple ramification points (we divided by $b!$ in order to not distinguish between them)
+	\item $i$ indicizes the non-simple ramification points
+	\item $j$ gives the ramification profiles
+\end{itemize}
+
+The first advantage of considering generating function in place of the single Hurwitz numbers is 
+
+\begin{theorem}[{\cite[Thm. 10.2.1]{CM}}]
+	\deq{1+\fH^\bullet=e^{\fH^\circ}}
+\end{theorem}
+
+Moreover, for any $\l\vdash d$, we have the following relation 
+\deq{s_\l(p_1,\ldots,p_d)=\frac1{d!}\sum_{\q\vdash d}\c^\l_\q|C_\q|p^\q}
+where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, and is homogeneous of degree $d$, see \cite[§A, Prop. 4.37, Ex. A.29]{FH} or \cite[Part I]{M} (note the similarity with the base change $c_\q\to e_\l$). Putting formulas together we get
+\deq{
+	\fH^\bullet(p_{i,j},q,\b)&=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\,\vdash d}\cdots\sum_{\q_{m}\,\vdash d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\sum_{\l\,\vdash\,d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)\\
+	&=\sum_{d=0}^\infty q^d\sum_{\l\,\vdash\,d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\sum_{\q_1\,\vdash d}\cdots\sum_{\q_{m}\,\vdash d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\prod_{i=1}^{m}d!|C_i|\c^\l(C_i)\\
+	&=\sum_{d=0}^\infty q^d\sum_{\l\,\vdash\,d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\prod_{i=1}^{m}s_\l(p_{i,1},\ldots,p_{i,d})
+}
+
+The case $m=2$ correspond to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in. For a reason that will be more clear later we denote the corresponding Hurwitz potential by $\w$
+\deq{\w(p_j,p'_j,q,\b)&=\sum_{d=0}^\infty q^d\sum_{\l\,\vdash\,d} e^{\b f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
+	&=\sum_{\l}q^{|\l|} e^{\b f_2(\l)}s_\l(P)s_\l(P')}
+where $\sum_\l$ runs over the paritions of arbitrary integers and $|\l|$ is the size of the partition $\l$, $\l\vdash|\l|$. We used $P$ and $P'$ to denote the set of variables $\{p_1,p_2,\ldots\}$ and $\{p'_1,p'_2,\ldots\}$ respectively (of course $s_\l$ depends only on the first $|\l|$ variables). 
+
+Before moving on, notice that for double Hurwitz numbers the Riemann-Hurwitz formula gives
+\deq{2h=b+2-\ell(\q)-\ell(\q')}
+
+Our generating function for double Hurwitz numbers takes a very simple form, it only remains to rewrite $f_2(\l)$ in a nicer way. To do this we will use the Frobenius formula combined with the \emph{half-infinite wedge formalism}. Regarding the first, note that we did not wrote the general Frobenius formula, since it is quite complicated. However it has a nicer expression in the special case where $C_\q=(2)$, that is the case needed to compute $f_2$.
+
 
 \end{document}
