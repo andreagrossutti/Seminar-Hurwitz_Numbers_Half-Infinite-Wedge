@@ -408,19 +408,18 @@ The Heisenberg commutation relation ensures that the ordering of the multiplied 
 \deq{\{\a_{-\q}\vac\,\big|\,\q\prt d\}}
 is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner product $(-,-)$. To see this it suffices to prove that $\a_{\q'}\a_{-\q}\vac\propto \d_{\q,\q'}\vac$.
 
-The two basis of $\hiwz$ are related by the following result, which corresponds exactly to the \emph{Murnaghan-Nakayama rule} for the computation of $\c_\q^\l$ (\cite[Ex. 4.45]{FH}): 
-\begin{lemma}[{\cite[Lemma 2.13]{J}}, {\cite[§§2.3.2]{O2}}]
-	Let $d\in\Z_{\geq0}$, $\q\prt d$, then
-	\deq{\a_{-\q}\vac=\sum_{\l\prt d}\c_\q^\l v_\l}
+The two basis of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that \todo{add picture}
+\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
+where $\l'<\l$ means that $\l'_i<\l_i$ for all $i\leq\ell(\l)$ and $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. This is very similar to
+\begin{lemma}[\emph{Murnaghan-Nakayama rule} {\cite[Ex. 4.45]{FH}}]
+	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}\c^{\l'}_\q}
 \end{lemma}
-\todo{add relation with Murnaghan-Nakayama}
-
-Note that for $\l,\q\prt d$, we have that $a_\q v_\l$ should be a energy 0 and charge 0 state, hence proportional to $\vac$. The proportionality coefficient is given by
-\deq{(a_\q v_\l,\vac)=(v_\l,a_{-\q}\vac)=\c_\q^\l}
-hence
+Using these identities we get that for any two partitions $\l$ and $\q$ such that $|\l|=|\q|$ 
 \deq{\a_{\q} v_\l=\c_\q^\l v_\emptyset}
+and than taking the adjoint\footnote{Write $\a_{-\q}\vac=\sum_{\l\prt|\q|}(v_\l,\a_{-\q}\vac)v_\l=\sum_{\l\prt|\q|}(\a_\q v_\l,\vac)v_\l$.} we arrive at
+\deq{\a_{-\q}\vac=\sum_{\l\prt |\q|}\c_\q^\l v_\l}
 
-Using this lemma, for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ and $\q'=\{\q'_1,\ldots,\q'_{\ell(\q')}\}\prt d$ we obtain
+Using this result, for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ and $\q'=\{\q'_1,\ldots,\q'_{\ell(\q')}\}\prt d$ we obtain
 \deq{\big(\vac,\a_\q F_2^b\a_{-\q'}\vac\big)
 	&=\sum_{\l\prt d}\c_{\q'}^\l\big(\vac,\a_\q F_2^b v_\l\big)
 	=\sum_{\l\prt d}f_2(\l)^b\c_{\q'}^\l\big(\vac,\a_\q v_\l\big)\\
@@ -446,7 +445,7 @@ To do so we should be able to recover the Schur polynomials from the half infini
 Given a sequence $t=(t_1,t_2,\ldots)$ define
 \deq{\G_\pm(t)=\exp\Bigg(\sum_{n=1}^\infty t_n\a_{\pm n}\Bigg)}
 Note that $\G_+(t)$ and $\G_-(t)$ are adjoint. The following result can also be related to some results in representation theory of $S_d$
-\begin{lemma}[{\cite[Eq. (A.16)]{O2}}]
+\begin{lemma}[{\cite[Eq. (A.16)]{O2}}, {\cite{MJD}}]
 	Consider a set of variables $P=(p_1,p_2,\ldots)$ and denote $p^{(k)}=p_1^k+p_2^k+\cdots$. Then
 	\deq{\G_-\bigg(p^{(1)},\frac{p^{(2)}}2,\frac{p^{(3)}}3,\cdots\bigg)\vac=\sum_\l s_\l(P)v_\l}
 	where $\sum_\l$ runs over all possible partitions (of any number).
@@ -470,6 +469,6 @@ Summarizing, we obtained the following formulas
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac{1}{\prod_{i} \q_i! \,i^{a_i}\prod_j\q'_j!\,j^{a'_j}}\big\la\a_\q F_2^b\a_{-\q'}\big\ra\\
 	\fh^\bullet_d(\q,\q')&=\frac{1}{\prod_{i} \q_i! \,i^{a_i}\prod_j\q'_j!\,j^{a'_j}}\big\la\a_\q e^{F_2}\a_{-\q'}\big\ra\\
 	\w(p_j,p'_j,q,\b)&=\big\la\G_+q^He^{\b F_2}\G_-\big\ra}
-The last one was first derived in \cite{O1}, and later the first two were derived in \cite{J}. In \cite{O1} it was shown also that the $\w$ potential is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\w$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
+The last one was first derived in \cite{O1}, and later the first two were derived in \cite{OP1} (although in a quite different form). In \cite{O1} it was shown also that the $\w$ potential is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\w$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
 
 \end{document}
