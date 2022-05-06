@@ -199,7 +199,7 @@ Since $\cZ\C[S_d]$ admits a basis of idempotent elements, we say that it is a \e
 \deq{e_\l=\frac{\dim \l}{d!}\sum_{\q\prt d}\c^\l(C_\q)c_\q
 \quad\tand\quad
 c_\q=|C_\q|\sum_{\l\prt  d}\frac{\c^\l(C_\q)}{\dim\l}e_\l\label{eq:change-basis-class-alg}}
-where $\dim \l:=\dim V_\l$. In order to simplify the notation, set also $\c^\l_\q:=\c^\l(C_\q)$. 
+where $\dim \l:=\dim V_\l$. 
 
 \section{Burnside's formula}
 
@@ -254,8 +254,13 @@ Rather than considering the different Hurwitz numbers separately, it worth to co
 	\deq{\fH^\bullet(p_{i,j},q,\b):=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
 	where for $\q=(l_1,\ldots,l_k)\prt d$ we have
 	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\label{eq:power-sum-sym-pol}}
-	An analogous definition holds for the \emph{connected Hurwitz potential} $\fH^\circ$. 
+	We also introduce the \emph{modified Hurwitz potential} to be
+	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{\b^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
+	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
 \end{definition}
+
+Note that from the definition we have
+\deq{\fH^\bullet(\p_{i,j},q,\b)=\sum_{d=0}^\infty q^d\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\fh^\bullet_d(\q_q,\ldots,\q_m)}
 
 For fixed $i$, the polynomials of the form $p^\q$ for all partitions $\q\prt d$ form a basis for the space of all homogeneous polynomials of degree $d$ in $d$ variables with rational coefficients. They are called \emph{power sum polynomials}. Therefore, given $\fH$, it can be expanded uniquely as in \eqref{eq:Hur-pot-0} giving all the Hurwitz numbers. For more details on power sum polynomials see \cite[§A]{FH} or \cite[Part I]{M}. 
 
@@ -273,26 +278,35 @@ The first advantage of considering generating function in place of the single Hu
 	\deq{1+\fH^\bullet=e^{\fH^\circ}}
 \end{theorem}
 
-Moreover, for any $\l\prt d$, we have the following relation 
+In order to simplify the notation, in the following we denote $\c^\l_\q:=\c^\l(C_\q)$. 
+
+For any $\l\prt d$, we have the following relation 
 \deq{s_\l(p_1,\ldots,p_d)=\frac1{d!}\sum_{\q\prt d}\c^\l_\q|C_\q|p^\q}
 where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, and is homogeneous of degree $d$, see \cite[§A, Prop. 4.37, Ex. A.29]{FH} or \cite[Part I]{M} (note the similarity with the base change $c_\q\to e_\l$). Putting formulas together we get
 \deq{
 	\fH^\bullet(p_{i,j},q,\b)&=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)\\
-	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\prod_{i=1}^{m}d!|C_i|\c^\l(C_i)\\
+	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\prod_{i=1}^{m}d!|C_{\q_i}|\c^\l_{\q_i}\\
 	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\prod_{i=1}^{m}s_\l(p_{i,1},\ldots,p_{i,d})
 }
 
 The case $m=2$ correspond to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in. For a reason that will be more clear later we denote the corresponding Hurwitz potential by $\w$
-\deq{\w(p_j,p'_j,q,\b)&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
+\deq{\w(p_j,p'_j,q,\b)&:=\fH^\bullet(\{p_j,p_j'\},q,\b)\\
+&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
 	&=\sum_{\l}q^{|\l|} e^{\b f_2(\l)}s_\l(P)s_\l(P')}
 where $\sum_\l$ runs over the paritions of arbitrary integers and $|\l|$ is the size of the partition $\l$, $\l\prt|\l|$. We used $P$ and $P'$ to denote the set of variables $\{p_1,p_2,\ldots\}$ and $\{p'_1,p'_2,\ldots\}$ respectively (of course $s_\l$ depends only on the first $|\l|$ variables). 
+
+For the case $m=2$ we also have
+\deq{H^\bullet_{d,b}(\q,\q')=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}}
+and
+\deq{\fh^\bullet_d(\q,\q')=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}}
+
 
 Before moving on, notice that for double Hurwitz numbers the Riemann-Hurwitz formula gives
 \deq{2h=b+2-\ell(\q)-\ell(\q')}
 
 \section{Frobenius formula for $C_{(2)}$}
 
-Our generating function for double Hurwitz numbers takes a very simple form, it only remains to rewrite $f_2(\l)$ in a nicer way. To do this we will use the Frobenius formula combined with the \emph{half-infinite wedge formalism}. Regarding the first, note that we did not wrote the general Frobenius formula, since it is quite complicated. However it has a nicer expression in the special case of $\c^\l(C_{(2)})$, that is the case needed to compute $f_2$.
+Here we want to rewrite $f_2(\l)$ in a different way using Frobenius formula. We did not wrote the general Frobenius formula, since it is quite complicated. However it has a nicer expression in the special case of $\c^\l(C_{(2)})$, that is the case needed to compute $f_2$.
 
 For a given partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram, and let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper left to the lower right. Then $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ is called \emph{Frobenius notation} of the partition. \todo{Add picture, FH pag 51} Let also define the \emph{modified Frobenius notation} to be $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. Then
 	
@@ -303,17 +317,18 @@ For a given partition $\l$, define its rank $r$ to be the length of the diagonal
 From this and $|C_{(2)}|=\begin{pmatrix}d\\2\end{pmatrix}$ it follows that 
 \deq{f_2(\l)=\frac{|C_{(2)}|}{\dim \l}\c^\l(C_{(2)})=\frac12\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}
 
-Draw the Young diagram of $\l$ over the real line with opposite orientation as in the picture \todo{picture} and consider the black and white stones as showed. Suppose that $\l$ is made of $k=\ell(\l)$ cycles of lengths $\{\l_1,\ldots,\l_k\}$ where $\l_1\geq\l_2\geq\ldots$. Now consider the ordered set $\{\ti\l\}_{i\in\Z_{\geq0}}=\{\l_1,\ldots,\l_k,0,0,\ldots\}$ ending with infinitely many zeros. Then it is clear that black stones are placed in correspondence to elements of 
-\deq{\fS_\bullet(\l):=\{\l_i-i+1/2\}\subset\Z+\frac12}
+Draw the Young diagram of $\l$ over the real line with opposite orientation as in the picture \todo{picture} and consider the black and white stones as showed. Suppose that $\l$ is made of $k=\ell(\l)$ cycles of lengths $\{\l_1,\ldots,\l_k\}$ where $\l_1\geq\l_2\geq\ldots$. Now consider the ordered set $\{\ti\l_i\}_{i\in\Z_{\geq0}}=\{\l_1,\ldots,\l_k,0,0,\ldots\}$ ending with infinitely many zeros. Then it is clear that black stones are placed in correspondence to elements of 
+\deq{\fS_\bullet(\l):=\{\ti\l_i-i+1/2\}\subset\Z+\frac12}
 and white stones in correspondence to elements of $\fS_\circ(\l):=(\Z+\frac12)\setminus\fS_\bullet(\l)$. Moreover, the coefficients in the modified Frobenius notation are given by
 \deq{\{a'_i\}&=\fS_\bullet^+(\l):=\fS_\bullet\cap(\Z_{\geq0}+1/2)\\
 	\{b'_i\}&=\fS_\circ^-(\l):=\fS_\circ\cap(\Z_{\leq0}-1/2)=(\Z_{\leq0}-1/2)\setminus\fS_\bullet(\l)}
 Hence we obtained
 \deq{f_2(\l)=\sum_{k\in\fS_\bullet^+}\frac{k^2}2-\sum_{k\in\fS_\circ^-}\frac{k^2}2}
 
-The aim of the following section is to construct a system described by a vector space whose basis elements correspond to partitions (a.k.a.\@ Young diagrams) and which admits an operator $\cF_2$ which takes value $f_2(\l)$ in correspondence to the configuration $\l$. Actually we will be able to do more, that is, to recover the whole Hurwitz potential
-\deq{\w(p_j,p'_j,q,\b)=\sum_{\l}q^{|\l|} e^{\b f_2(\l)}s_\l(P)s_\l(P')}
-as a correlator of some other operator, that is $\w=(v,Av)$ for a certain vector $v$, a certain operator $A$ acting on it, and some inner product $(-,-)$ defined on the vector space. Such a system will be described by configurations of black and white stones as before. 
+Notice also that
+\deq{|\l|=\l_1+\cdots+\l_k=a_1'+\cdots+a_k'+b_1'+\cdots+b_k'=\sum_{k\in\fS_\bullet^+} k-\sum_{k\in\fS_\circ^-}k}
+
+The aim of the following section is to write the formula of double Hurwitz numbers and those for the corresponding potentials in terms of matrix elements in the half infinite wedge space. This half infinite wedge space corresponds to the space of possible configurations of black and white stones as before.
 
 \section{Half infinite wedge formalism}
 
@@ -341,17 +356,120 @@ These operators are related to the usual creation and annihilation operators for
 
 To see this, note that if $\und k$ is not present in $v_S$ (``the energy level $k$ is empty'') then $\p_k$ add that vector to $v_S$ (''creates the electron'') whereas $\p_k^*$ maps $v_S$ to 0 (``the state is annihilated''). Instead, if $\und k$ is present in $v_S$ (``the energy level $k$ is occupied'') then $\p_k$ maps $v_S$ to 0 (``Pauli principle'') whereas $\p_k^*$ removes that vector from $v_S$ (``the electron at the energy level $k$ is annihilated''). 
 
+It is also that all the vectors in $\hiw$ can be obtained from $\vac$ by applying creation and annihilation operators a finite number of times, that is $\vac$ is cyclic. 
+
 Introduce the normal ordered product
-\deq{\no{\p_k\p_k^*}=\begin{cases}\p_k\p_k^*\quad&k>0\\-\p_k^*\p_k\quad&k<0\end{cases}}
-Hence for $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 if we have a black (resp. white) stone in $k$ and zero otherwise. Finiteness condition ensures that any operator of the form $\sum_{k}a_k\no{\p_k\p_k^*}$ is finite for any choice of the coefficients $a_k$. 
+\deq{\no{\p_k\p_k^*}\ \ :=\begin{cases}\p_k\p_k^*\quad&k>0\\-\p_k^*\p_k\quad&k<0\end{cases}}
+Hence for $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 if we have a black (resp. white) stone in $k$ and zero otherwise. Finiteness condition ensures that any operator of the form $\sum_{k}a_k\no{\p_k\p_k^*}$ is well defined for any choice of the coefficients $a_k$. 
 
-Introduce the following operators, called \emph{energy operator} and \emph{charge operators} respectively
-\deq{H=\sum_{k\in\Z+1/2}k\no{\p_k\p_k^*}
+Now we can define the operator $F_2$ 
+\deq{F_2=\sum_{k\in\Z+\frac12}\frac{k^2}2\no{\p_k\p_k^*}}
+which satisfies
+\deq{F_2v_\l=f_2(\l)v_\l}
+Let's see how we can rewrite the whole quantities
+\deq{H^\bullet_{d,b}(\q,\q')&=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}\\
+	\fh^\bullet_d(\q,\q')&=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}\\
+	\w(p_j,p'_j,q,\b)&=\sum_{\l}q^{|\l|} s_\l(P)e^{\b f_2(\l)}s_\l(P')}
+in the half infinte wedge space. To do so we should be able to rewrite also quantities $|\l|$, $\c^\l_\q$ and $s_\l(P)$ in terms of matrix elements in the half infinite wedge space. 
+
+We introduce the following operators, called \emph{energy operator} and \emph{charge operators} respectively
+\deq{H:=\sum_{k\in\Z+1/2}k\no{\p_k\p_k^*}
 	\qquad
-	C=\sum_{k\in\Z+1/2}\no{\p_k\p_k^*}}
+	C:=\sum_{k\in\Z+1/2}\no{\p_k\p_k^*}}
+The physical interpretation of these operators is obvious when we regard a black stone at position $k>0$ as an electron of energy $k$ and charge $+1$ and a white stone at position $k<0$ as a positron of energy $-k$ and charge $-1$. 
+
+First notice that from our previous discussion we have 
+\deq{Hv_\l=|\l|v_\l}
+and so 
+\deq{q^He^{\b F_2}v_\l=q^{|\l|}e^{f_2(\l)}v_\l}
 
 
+We have 
+\deq{Cv_S=(|S^+|-|S^-|)v_s}
+Suppose $v_s$ is of charge $c$, \ie $Cv_S=c\,v_S$, then $|S^+|=|S^-|+c$. Pick $k\in S$, $k<\min (S^-)$, this means that the stone at $k$ and all those on its right are black. Then $|S^+|=|S^-|+c$ implies that $k=s_{-(k-1/2)+c}$. Hence the charge of the vector $v_S$ is given by
+\deq{c=\lim_{i\to+\infty}\Big(s_i+i-\frac12\Big)}
+In particular, all vectors corresponding to Young diagrams ($S=\fS_\bullet(\l)$) have zero charge. Conversely, any vector of zero charge can be obtained from a Young diagram by taking the partition $\l_i=s_i+i-\frac12$ (omitting the infinitely many $\l_i$ which vanish). We denote by $\hiwz$ the subspace of $\hiw$ of zero charge. From this we get that 
+\deq{\{v_\l\,\big|\,\l\prt d\}}
+is a basis for the subspace of $\hiwz$ given by vectors of energy $d$. Considering all positive values of $d$ we get a basis of the whole charge zero subspace $\hiwz$. 
 
+Now define the following operators for all $n\in\Z_{\neq0}$
+\deq{\a_n:=\sum_{n\in\Z+\frac12}\p_{k-n}\p^*_k}
+satisfying $\a_n\und k=\und{k-n}$ and the \emph{Heisenberg commutation relations}
+\deq{[\a_n,\a_m]=n\d_{n+m,0}}
+From the definition it follows that $\a_n$ and $\a_{-n}$ are adjoint for every $n\in\Z_{\neq0}$.
 
- 
+The effect of this operator in a certain configuration of stones (or electrons) is the following. Pick one and move it to the right by $n$ positions. If the new position is a white stone, make it black and replace the initial black stone by a white one. If the new position is occupied by a black stone, then the operator gives the zero vector (Pauli principle). Then repeat this for all black stones and sum all the resulting vectors to give the final state. Finiteness condition ensures that this operation is well defined. 
+
+For any partition $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt|\q|$ define
+\deq{\a_{\q}:=\prod_{i=1}^{\ell(\q)}\a_{\q_i}
+	\tand
+	\a_{-\q}:=\prod_{i=1}^{\ell(\q)}\a_{-\q_i}} 
+The Heisenberg commutation relation ensures that the ordering of the multiplied operators is not relevant also that $\a_\q$ and $\a_{-\q}$ are adjoint. Note also that $\a_{\q}$ (resp. $\a_{-\q}$) decreases (resp. increases) the energy of states by $|\q|$. Moreover, it is possible to prove\footnote{\cite[Lemma 2.12]{J}} that 
+\deq{\{\a_{-\q}\vac\,\big|\,\q\prt d\}}
+is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner product $(-,-)$. To see this it suffices to prove that $\a_{\q'}\a_{-\q}\vac\propto \d_{\q,\q'}\vac$.
+
+The two basis of $\hiwz$ are related by the following result, which corresponds exactly to the \emph{Murnaghan-Nakayama rule} for the computation of $\c_\q^\l$ (\cite[Ex. 4.45]{FH}): 
+\begin{lemma}[{\cite[Lemma 2.13]{J}}, {\cite[§§2.3.2]{O2}}]
+	Let $d\in\Z_{\geq0}$, $\q\prt d$, then
+	\deq{\a_{-\q}\vac=\sum_{\l\prt d}\c_\q^\l v_\l}
+\end{lemma}
+\todo{add relation with Murnaghan-Nakayama}
+
+Note that for $\l,\q\prt d$, we have that $a_\q v_\l$ should be a energy 0 and charge 0 state, hence proportional to $\vac$. The proportionality coefficient is given by
+\deq{(a_\q v_\l,\vac)=(v_\l,a_{-\q}\vac)=\c_\q^\l}
+hence
+\deq{\a_{\q} v_\l=\c_\q^\l v_\emptyset}
+
+Using this lemma, for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ and $\q'=\{\q'_1,\ldots,\q'_{\ell(\q')}\}\prt d$ we obtain
+\deq{\big(\vac,\a_\q F_2^b\a_{-\q'}\vac\big)
+	&=\sum_{\l\prt d}\c_{\q'}^\l\big(\vac,\a_\q F_2^b v_\l\big)
+	=\sum_{\l\prt d}f_2(\l)^b\c_{\q'}^\l\big(\vac,\a_\q v_\l\big)\\
+	&=\sum_{\l\prt d}\c_\q^\l f_2(\l)^b\c_{\q'}^\l\big(\vac,\vac\big)
+	=\sum_{\l\prt d}\c_{\q}^{\l}f_2(\l)^b\c_{\q'}^{\l}}
+The same result could also be obtained  without using $\a_{\q} v_\l=\c_\q^\l v_\emptyset$ as
+\deq{\big(\vac,\a_\q F_2^b\a_{-\q'}\vac\big)
+	&=\big(\a_{-\q}\vac,F_2^b\a_{-\q'}\vac\big)
+	=\sum_{\l,\l'\prt d}\big(\c_{\q}^{\l}v_{\l},F_2^b\c_{\q'}^{\l'}v_{\l'}\big)\\
+	&=\sum_{\l,\l'\prt d}\c_{\q}^{\l}f_2(\l')^b\c_{\q'}^{\l'}\big(v_{\l},v_{\l'}\big)
+	=\sum_{\l\prt d}\c_{\q}^{\l}f_2(\l)^b\c_{\q'}^{\l}}
+Finally we get
+\deq{H^\bullet_{d,b}(\q,\q')&=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\big\la\a_\q F_2^b\a_{-\q'}\big\ra}
+where the \emph{correlator} of the operator $A$ is defined by $\la A\ra:=(v_\emptyset,Av_\emptyset)$. Similarly
+\deq{\fh^\bullet_d(\q,\q')&=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}=\frac{|C_{\q}|}{d!}\frac{|C_{\q'}|}{d!}\big\la\a_\q e^{F_2}\a_{-\q'}\big\ra}
+We recall the well known fact that for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
+\deq{|C_\q|=\frac{d!}{\prod_{i=1}^{\ell(\q)} \q_i! \,i^{a_i}}}
+
+Now it remains to rewrite
+\deq{\w(p_j,p'_j,q,\b)&=\sum_{\l}q^{|\l|} s_\l(P)e^{\b f_2(\l)}s_\l(P')}
+To do so we should be able to recover the Schur polynomials from the half infinite wedge formalism. 
+
+Given a sequence $t=(t_1,t_2,\ldots)$ define
+\deq{\G_\pm(t)=\exp\Bigg(\sum_{n=1}^\infty t_n\a_{\pm n}\Bigg)}
+Note that $\G_+(t)$ and $\G_-(t)$ are adjoint. The following result can also be related to some results in representation theory of $S_d$
+\begin{lemma}[{\cite[Eq. (A.16)]{O2}}]
+	Consider a set of variables $P=(p_1,p_2,\ldots)$ and denote $p^{(k)}=p_1^k+p_2^k+\cdots$. Then
+	\deq{\G_-\bigg(p^{(1)},\frac{p^{(2)}}2,\frac{p^{(3)}}3,\cdots\bigg)\vac=\sum_\l s_\l(P)v_\l}
+	where $\sum_\l$ runs over all possible partitions (of any number).
+\end{lemma}
+Introduce the following abbreviations
+\deq{\G_+:=\G_+\bigg(p^{(1)},\frac{p^{(2)}}2,\frac{p^{(3)}}3,\cdots\bigg)
+	\tand
+	\G_-:=\G_-\bigg(p'^{(1)},\frac{p'^{(2)}}2,\frac{p'^{(3)}}3,\cdots\bigg)}
+where $P=(p_1,p_2,\ldots)$, $P'=(p'_1,p'_2,\ldots)$. 
+Using the lemma we have
+\deq{&\big(\vac,\G_+q^He^{\b F_2}\G_-\vac\big)
+	=\big(\G_-\vac,q^He^{\b F_2}\G_-\vac\big)
+	=\sum_{\l,\l'}s_\l(P)s_{\l'}(P')\big(v_\l,q^He^{\b F_2}v_{\l'}\big)\\
+	&\qquad=\sum_{\l,\l'}s_\l(P)e^{\b f_2(\l')}s_{\l'}(P')\big(v_\l,q^Hv_{\l'}\big)
+	=\sum_{\l,\l'}q^{|\l'|}s_\l(P)e^{\b f_2(\l')}s_{\l'}(P')\big(v_\l,v_{\l'}\big)\\
+	&\qquad=\sum_{\l}q^{|\l|}s_\l(P)e^{\b f_2(\l)}s_{\l}(P')}
+so
+\deq{\w(p_j,p'_j,q,\b)=\big\la\G_+q^He^{\b F_2}\G_-\big\ra}
+
+Summarizing, we obtained the following formulas
+\deq{H^\bullet_{d,b}(\q,\q')&=\frac{1}{\prod_{i} \q_i! \,i^{a_i}\prod_j\q'_j!\,j^{a'_j}}\big\la\a_\q F_2^b\a_{-\q'}\big\ra\\
+	\fh^\bullet_d(\q,\q')&=\frac{1}{\prod_{i} \q_i! \,i^{a_i}\prod_j\q'_j!\,j^{a'_j}}\big\la\a_\q e^{F_2}\a_{-\q'}\big\ra\\
+	\w(p_j,p'_j,q,\b)&=\big\la\G_+q^He^{\b F_2}\G_-\big\ra}
+The last one was first derived in \cite{O1}, and later the first two were derived in \cite{J}. In \cite{O1} it was shown also that the $\w$ potential is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\w$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
+
 \end{document}
