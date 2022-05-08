@@ -285,23 +285,23 @@ Rather than considering the different Hurwitz numbers separately, it worth to co
 
 \begin{definition}
 	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. Then we define the \emph{Hurwitz potential} to be
-	\deq{\fH^\bullet(p_{i,j},q,\b):=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
+	\deq{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
 	where for $\q=(l_1,\ldots,l_k)\prt d$ we have
 	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\label{eq:power-sum-sym-pol}}
 	We also introduce the \emph{modified Hurwitz potential} to be
-	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{\b^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
+	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
 	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
 \end{definition}
 
 Note that from the definition we have
-\deq{\fH^\bullet(\p_{i,j},q,\b)=\sum_{d=0}^\infty q^d\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\fh^\bullet_d(\q_q,\ldots,\q_m)}
+\deq{\fH^\bullet(\p_{i,j},q,z)=\sum_{d=0}^\infty q^d\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\fh^\bullet_d(\q_q,\ldots,\q_m)}
 
 For fixed $i$, the polynomials of the form $p^\q$ for all partitions $\q\prt d$ form a basis for the space of all homogeneous polynomials of degree $d$ in $d$ variables with rational coefficients. They are called \emph{power sum polynomials}. Therefore, given $\fH^\bullet$, it can be expanded uniquely as in \eqref{eq:Hur-pot-0} giving all the Hurwitz numbers. For more details on power sum polynomials see \cite[§A]{FH} or \cite[Part I]{M}. 
 
 We see that in the expansion of the Hurwitz potential
 \begin{itemize}
 	\item $q$ keeps track of the degree $d$
-	\item $\b$ keeps track of the number of simple ramification points (we divided by $b!$ in order to not distinguish between them)
+	\item $z$ keeps track of the number of simple ramification points (we divided by $b!$ in order to not distinguish between them)
 	\item $i$ indicizes the non-simple ramification points
 	\item $j$ gives the ramification profiles
 \end{itemize}
@@ -318,21 +318,21 @@ For any $\l\prt d$, we have the following relation\footnote{See \cite[§A, Prop.
 \deq{s_\l(p_1,\ldots,p_d)=\frac1{d!}\sum_{\q\prt d}\c^\l_\q|C_\q|p^\q}
 where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneous polynomial of degree $d$. Putting formulas together we get
 \deq{
-	\fH^\bullet(p_{i,j},q,\b)&=\sum_{d,b=0}^\infty q^d\frac{\b^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)\\
-	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\prod_{i=1}^{m}\frac1{d!}|C_{\q_i}|\c^\l_{\q_i}\\
-	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\prod_{i=1}^{m}s_\l(p_{i,1},\ldots,p_{i,d})
+	\fH^\bullet(p_{i,j},q,z)&=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)\\
+	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\prod_{i=1}^{m}\frac1{d!}|C_{\q_i}|\c^\l_{\q_i}\\
+	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\prod_{i=1}^{m}s_\l(p_{i,1},\ldots,p_{i,d})
 }
 
 The case $m=2$ corresponds to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in. For a reason that will be more clear later we denote the corresponding Hurwitz potential by $\w$
-\deq{\w(p_j,p'_j,q,\b)&:=\fH^\bullet(\{p_j,p_j'\},q,\b)\\
-&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{\b f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
-	&=\sum_{\l}q^{|\l|} e^{\b f_2(\l)}s_\l(P)s_\l(P')}
+\deq{\w(p_j,p'_j,q,z)&:=\fH^\bullet(\{p_j,p_j'\},q,z)\\
+&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
+	&=\sum_{\l}q^{|\l|} e^{z f_2(\l)}s_\l(P)s_\l(P')}
 where $\sum_\l$ runs over the paritions of arbitrary integers and $|\l|$ is the size of the partition $\l$, $\l\prt|\l|$. We used $P$ and $P'$ to denote the set of variables $\{p_1,p_2,\ldots\}$ and $\{p'_1,p'_2,\ldots\}$ respectively (of course $s_\l$ depends only on the first $|\l|$ variables). 
 
 For the case $m=2$ we also have
 \deq{H^\bullet_{d,b}(\q,\q')=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}}
 and
-\deq{\fh^\bullet_d(\q,\q')=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}}
+\deq{\fh^\bullet_d(\q,\q')=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}}
 where 
 \deq{\fz(\q):=\frac{d!}{|C_\q|}}
 We recall the well known fact that for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
@@ -408,8 +408,8 @@ which satisfies
 
 Let's see how we can rewrite the whole quantities
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}\\
-	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}\\
-	\w(p_j,p'_j,q,\b)&=\sum_{\l}q^{|\l|} s_\l(P)e^{\b f_2(\l)}s_\l(P')}
+	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}\\
+	\w(p_j,p'_j,q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
 in the half infinte wedge space. To do so we should be able to rewrite also quantities $|\l|$, $\c^\l_\q$ and $s_\l(P)$ in terms of matrix elements in the half infinite wedge space. 
 
 We introduce the following operators, called \emph{energy operator} and \emph{charge operators} respectively
@@ -421,7 +421,7 @@ The physical interpretation of these operators is obvious when we regard a black
 First notice that from our previous discussion we have 
 \deq{Hv_\l=|\l|v_\l}
 and so 
-\deq{q^He^{\b \cF_2}v_\l=q^{|\l|}e^{f_2(\l)}v_\l}
+\deq{q^He^{z \cF_2}v_\l=q^{|\l|}e^{f_2(\l)}v_\l}
 
 
 We have 
@@ -468,11 +468,11 @@ Using this result, for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ and $\q'=\{\q'_1
 Finally we get
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q \cF_2^b\a_{-\q'}\big\ra}
 where the \emph{correlator} of the operator $A$ is defined by $\la A\ra:=(v_\emptyset,Av_\emptyset)$. Similarly
-\deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{\b f_2(\l)}\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{\cF_2}\a_{-\q'}\big\ra}
+\deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra}
 
 
 Now it remains to rewrite
-\deq{\w(p_j,p'_j,q,\b)&=\sum_{\l}q^{|\l|} s_\l(P)e^{\b f_2(\l)}s_\l(P')}
+\deq{\w(p_j,p'_j,q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
 To do so we should be able to recover the Schur polynomials from the half infinite wedge formalism. 
 
 Given a sequence $t=(t_1,t_2,\ldots)$ define
@@ -489,27 +489,31 @@ Introduce the following abbreviations
 	\G_-:=\G_-\bigg(p'^{(1)},\frac{p'^{(2)}}2,\frac{p'^{(3)}}3,\cdots\bigg)}
 where $P=(p_1,p_2,\ldots)$, $P'=(p'_1,p'_2,\ldots)$. 
 Using the lemma we have
-\deq{&\big(\vac,\G_+q^He^{\b \cF_2}\G_-\vac\big)
-	=\big(\G_-\vac,q^He^{\b \cF_2}\G_-\vac\big)
-	=\sum_{\l,\l'}s_\l(P)s_{\l'}(P')\big(v_\l,q^He^{\b \cF_2}v_{\l'}\big)\\
-	&\qquad=\sum_{\l,\l'}s_\l(P)e^{\b f_2(\l')}s_{\l'}(P')\big(v_\l,q^Hv_{\l'}\big)
-	=\sum_{\l,\l'}q^{|\l'|}s_\l(P)e^{\b f_2(\l')}s_{\l'}(P')\big(v_\l,v_{\l'}\big)\\
-	&\qquad=\sum_{\l}q^{|\l|}s_\l(P)e^{\b f_2(\l)}s_{\l}(P')}
+\deq{&\big(\vac,\G_+q^He^{z \cF_2}\G_-\vac\big)
+	=\big(\G_-\vac,q^He^{z \cF_2}\G_-\vac\big)
+	=\sum_{\l,\l'}s_\l(P)s_{\l'}(P')\big(v_\l,q^He^{z \cF_2}v_{\l'}\big)\\
+	&\qquad=\sum_{\l,\l'}s_\l(P)e^{z f_2(\l')}s_{\l'}(P')\big(v_\l,q^Hv_{\l'}\big)
+	=\sum_{\l,\l'}q^{|\l'|}s_\l(P)e^{z f_2(\l')}s_{\l'}(P')\big(v_\l,v_{\l'}\big)\\
+	&\qquad=\sum_{\l}q^{|\l|}s_\l(P)e^{z f_2(\l)}s_{\l}(P')}
 so
-\deq{\w(p_j,p'_j,q,\b)=\big\la\G_+q^He^{\b \cF_2}\G_-\big\ra}
+\deq{\w(p_j,p'_j,q,z)=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
 
 Summarizing, we obtained the following formulas
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q \cF_2^b\a_{-\q'}\big\ra\\
-	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{\cF_2}\a_{-\q'}\big\ra\\
-	\w(p_j,p'_j,q,\b)&=\big\la\G_+q^He^{\b \cF_2}\G_-\big\ra}
+	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra\\
+	\w(p_j,p'_j,q,z)&=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
 The last one was first derived in \cite{O1}, and later the first two were derived in \cite{OP1} (although in a quite different form). In \cite{O1} it was shown also that the $\w$ potential is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\w$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
 
-Introducing other operators it is possible to rewrite the previous correlators in such a way that their computation is much simplified. See \cite{OP1,OP2,J} for more details. In order to simplify the notation, denote
+Notice that, by considering the energies of the operators in the correlators, it is clear that we should have $|\q|=|\q'|$ in order to have nonzero values, as expected since we should have $|\q|=d=|\q'|$. 
+
+Introducing other operators it is possible to rewrite the previous correlators in such a way that their computation is much simplified. See \cite{J,OP1,OP2} for more details. In order to simplify the notation, denote
 \deq{E_{ij}=\ \no{\p_j\p_k^*}}
 
 \begin{definition}
 	Let $r\in\Z$. We define
-	\deq{\cE_r(z):=\sum_{k\in\Z+\frac12}e^{z(k-r/2)}E_{k-r,k}+\frac{\d_{r,0}}{e^{z/2}-e^{-z/2}}}
+	\deq{\cE_r(z):=\sum_{k\in\Z+\frac12}e^{z(k-r/2)}E_{k-r,k}+\frac{\d_{r,0}}{\varsigma(z)}}
+	where
+	\deq{\varsigma(z):=e^{z/2}-e^{-z/2}}
 \end{definition}
 
 Let's explain the meaning of the additional term arising when $r=0$. We would like to have an operator which acts as
@@ -517,15 +521,15 @@ Let's explain the meaning of the additional term arising when $r=0$. We would li
 and the natural candidate is 
 \deq{\sum_{k\in\Z+\frac12}e^{zk}\p_{k}\p_k^*}
 However applying it to the vacuum the second definition gives for $\Re z>0$
-\deq{\sum_{k\in\Z_{\leq0}-\frac12}e^{zk}=e^{-z/2}\sum_{k\in\Z_{\leq0}}e^{zk}=\frac{e^{-z/2}}{1-e^{-z}}=\frac1{e^{z/2}-e^{-z/2}}}
+\deq{\sum_{k\in\Z_{\leq0}-\frac12}e^{zk}=e^{-z/2}\sum_{k\in\Z_{\leq0}}e^{zk}=\frac{e^{-z/2}}{1-e^{-z}}=\frac1{\varsigma(z)}}
 and diverges for $\Re z=0$. So we regularize
-\deq{\sum_{k\in\Z+\frac12}e^{zk}\p_{k}\p_k^*=\sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\sum_{k\in\Z_{\leq0}-\frac12}e^{zk} \quad\mapsto\quad \sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\frac1{e^{z/2}-e^{-z/2}}}
+\deq{\sum_{k\in\Z+\frac12}e^{zk}\p_{k}\p_k^*=\sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\sum_{k\in\Z_{\leq0}-\frac12}e^{zk} \quad\mapsto\quad \sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\frac1{\varsigma(z)}}
 For $r\neq0$ we don't have any problem since $E_{k-r,k}=\p_{k-r}\p_k^*$.
 
 The exponent $r/2$ in the definition is used in order to have
 \deq{\cE_r(z)^*=\cE_{-r}(z)}
 The operators $\cE$ satisfy the following commutation relation
-\deq{[\cE_a(z),\cE_b(w)]=\z(\det\left[\begin{smallmatrix}a&z\\b&w\end{smallmatrix}\right])\cE_{a+b}(z+w)}
+\deq{[\cE_a(z),\cE_b(w)]=\varsigma(\det\left[\begin{smallmatrix}a&z\\b&w\end{smallmatrix}\right])\cE_{a+b}(z+w)}
 The operators $\cE$ specialize to the standard bosonic operators on $\hiw$
 \deq{\a_k=\cE_k(0)\tcomma k\neq0}
 
@@ -554,9 +558,52 @@ and $\z(-2)=0$.
 
 The last formula we need is 
 \begin{lemma}[{\cite[Eq. 2.14]{OP2}}]
-	\deq{e^{z\cF_2}\a_{-n}e^{-z\cF_2}=\cE_{-m}(nz)}
+	\deq{e^{z\cF_2}\a_{-n}e^{-z\cF_2}=\cE_{-n}(nz)}
 \end{lemma}
 
-Now we can rewrite the Hurwitz numbers in a better form which makes computations simpler. 
+Now we can rewrite the modified Hurwitz potential in a better form which makes computations simpler. Using $\cF_2\vac=0$ we have
+\deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra
+	=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\a_{\q_i}\prod_{j=1}^{\ell(\q')}\big(e^{z\cF_2}\a_{-\q'_j}e^{-z\cF_2}\big)\ra\\
+	&=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\cE_{\q_i}(0)\prod_{j=1}^{\ell(\q')}\cE_{-\q'_j}(z\q'_j)\big\ra}
+Using this formula it is possible to compute the previous correlator by commuting the operators with negative energy on the right and those of positive energy on the left. Then only operators of zero energy survive, so we get a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\cE_0(n_1z)\cE_0(n_2z)\cdots$ for some positive integers $m_1,m_2,\ldots,n_1,n_2,\ldots$.
+Now recall
+\deq{
+	\cE_0(nz)=\sum_{k\in\Z+\frac12}e^{nzk}E_{k-r,k}+\frac1{\vars(nz)}}  
+and $E_{k-r,k}\vac=0$ for all $k,r$. Hence $\la\cE_0(nz)\ra=\inv\vars(nz)$ and we get as final result a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\inv\vars(n_1z)\inv\vars(n_2z)\cdots$.  
+
+
+\begin{example}
+	We illustrate the previous procedure by computing $\fh^\bullet_d(\q,\q')$ when $\q=(\q_1,\q_2)$ and $\q'=(\q'_1,\q'_2)$, satisfying $\q_1+\q_2=\q'_1+\q'_2=d$. We assume $\q_1>\q'_1>\q'_2>\q_2$. Then
+	\deq{\fh^\bullet_d(\q,\q')=\frac1{\fz(\q)\fz(\q')}\big\la\cE_{\q_1}(0)\cE_{\q_2}(0)\cE_{-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra}
+	Moving $\cE_{\q_2}(0)$ to the right we have
+	\deq{&\big\la\cE_{\q_1}(0)\cE_{\q_2}(0)\cE_{-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{\q_1}(0)\cE_{-\q'_1}(z\q'_1)\cE_{\q_2}(0)\cE_{-\q'_2}(z\q'_2)\big\ra+\vars(z\q_2\q'_1)\big\la\cE_{\q_1}(0)\cE_{\q_2-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra}
+	Moving again $\cE_{\q_2}(0)$ to the right in the first term we get
+	\deq{&\big\la\cE_{\q_1}(0)\cE_{-\q'_1}(z\q'_1)\cE_{\q_2}(0)\cE_{-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{\q_1}(0)\cE_{-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\cE_{\q_2}(0)\big\ra+\vars(z\q_2\q_2')\big\la\cE_{\q_1}(0)\cE_{-\q'_1}(z\q'_1)\cE_{\q_2-\q'_2}(z\q'_2)\big\ra}
+	The first term vanish since $\cE_{\q_2}(0)$ has negative energy. Similarly
+	\deq{&\big\la\cE_{\q_1}(0)\cE_{\q_2-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{\q_2-\q'_1}(z\q'_1)\cE_{\q_1}(0)\cE_{-\q'_2}(z\q'_2)\big\ra+\vars(z\q_1\q'_1)\big\la\cE_{\q_1+\q_2-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra}
+	and
+	\deq{&\big\la\cE_{\q_1}(0)\cE_{-\q'_1}(z\q'_1)\cE_{\q_2-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{-\q'_1}(z\q'_1)\cE_{\q_1}(0)\cE_{\q_2-\q'_2}(z\q'_2)\big\ra+\vars(z\q_1\q'_1)\big\la\cE_{\q_1-\q'_1}(z\q'_1)\cE_{\q_2-\q'_2}(z\q'_2)\big\ra}
+	where the first terms vanish since $\cE_{\q_2-\q'_1}(z\q'_1)$ and $\cE_{-\q'_1}(z\q'_1)$ have positive energy. It remains to consider
+	\deq{&\big\la\cE_{\q_1+\q_2-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{-\q'_2}(z\q'_2)\cE_{\q_1+\q_2-\q'_1}(z\q'_1)\big\ra+\vars\big[z((\q_1+\q_2-\q'_1)\q'_2-(-\q'_2)\q'_1)\big]\big\la\cE_{\q_1+\q_2-\q'_1-\q'_2}(z(\q'_1+\q'_2))\big\ra=\\
+		&\quad=\vars(zd\q'_2)\big\la\cE_0(zd)\big\ra}
+	and
+	\deq{&\big\la\cE_{\q_1-\q'_1}(z\q'_1)\cE_{\q_2-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\big\la\cE_{\q_2-\q'_2}(z\q'_2)\cE_{\q_1-\q'_1}(z\q'_1)\big\ra+\vars\big[z((\q_1-\q'_1)\q'_2-(\q_2-\q'_2)\q'_1)\big]\big\la\cE_{\q_1-\q'_1+\q_2-\q'_2}(z(\q'_1+\q'_2))\big\ra\\
+		&\quad=\vars(z(\q_1\q'_2-\q_2\q'_1))\big\la\cE_0(zd)\big\ra}
+	Putting our results together
+	\deq{&\big\la\cE_{\q_1}(0)\cE_{\q_2}(0)\cE_{-\q'_1}(z\q'_1)\cE_{-\q'_2}(z\q'_2)\big\ra=\\
+		&\quad=\vars(z\q_2\q_2')\vars(z\q_1\q'_1)\vars(z(\q_1\q'_2-\q_2\q'_1))\big\la\cE_0(zd)\big\ra+\vars(z\q_2\q'_1)\vars(z\q_1\q'_1)\vars(zd\q'_2)\big\la\cE_0(zd)\big\ra\\
+	&\quad=\frac{\vars(z\q_2\q_2')\vars(z\q_1\q'_1)\vars(z(\q_1\q'_2-\q_2\q'_1))+\vars(z\q_2\q'_1)\vars(z\q_1\q'_1)\vars(zd\q'_2)}{\vars(zd)}}
+	and using the following identity for $\vars$ 
+	\deq{\vars(a-b)\vars(c)+\vars(b-c)\vars(a)+\vars(c-a)\vars(b)=0}
+	we finally get
+	\deq{\fh^\bullet_d(\q,\q')=\frac1{\fz(\q)\fz(\q')}\frac{\vars(z\q_1\q'_1)\vars(z\q_1\q'_2)\vars(z\q_2d)}{\vars(zd)}}
+\end{example}
+
 
 \end{document}
