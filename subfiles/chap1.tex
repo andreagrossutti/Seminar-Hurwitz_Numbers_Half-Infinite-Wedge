@@ -43,7 +43,7 @@ where $i$ labels the elements of $\inv f(y)=\{x_1,\ldots,x_n\}$. Denote $d\defeq
 	Let $Y$ be a connected \cpt\ \rs\ of genus $g$, $B=\{b_1,\ldots,b_n\}\subset Y$ finite subset, $d\in\Z_{\geq1}$, $\q_1,\ldots,\q_n\prt d$. We define the \emph{(degree $d$) connected Hurwitz number} to be 
 	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|}}
 	and the \emph{(degree $d$) Hurwitz number} to be
-	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|} \label{eq:disc-H-numb}}
+	\deq[eq:disc-H-numb]{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|}}
 	where both sums runs over isomorphism classes of \holo\ maps $f\colon X\to Y$ \st
 	\begin{itemize}
 		\item $X$ is a \cpt\ \rs\ of genus $h$\footnote{For $X$ disconnected, its genus is defined by $\c=2g-2$, where the Euler characteristic $\c$ is naturally additive under disjoint unions. The Riemann-Hurwitz formula then applies identically in also for $X$ disconnected.}
@@ -56,7 +56,7 @@ where $i$ labels the elements of $\inv f(y)=\{x_1,\ldots,x_n\}$. Denote $d\defeq
 Note that for any $f\colon X\to Y$ as in the definition above we have 
 \deq{\sum_{x\in X}\n_x=\sum_{i=1}^n(d-\ell(\q_i))=nd-\sum_{i=1}^n\ell(\q_i)}
 where $\ell(\q_i)$ denotes the length of the partition $\q_i$ (\ie the number of cycles in $\q_i$), so due to Riemann-Hurwitz theorem we have 
-\deq{2h-2=(2g-2)d+nd-\sum_{i=1}^n\ell(\q_i) \label{eq:RHgenus}}
+\deq[eq:RHgenus]{2h-2=(2g-2)d+nd-\sum_{i=1}^n\ell(\q_i)}
 In particular the ramification profile of $f:X\to Y$ and the genus of $Y$ uniquely determines the genus of $X$. 
 
 \section{Maps of \rss\ as ramified covers}
@@ -163,7 +163,7 @@ Using theorem \ref{thm:CM7.3.1} the problem of computing degree $d$ Hurwitz numb
 	\deq{\C[S_d]:=\left\{\sum_{\s\in S_d}a_\s\s\ \big|\  a_\s\in\C\right\}}
 	with operations
 	\deq{\sum_{\s\in S_d}a_\s\s+\sum_{\s\in S_d}b_\s\s=\sum_{\s\in S_d}(a_\s+b_\s)\s}
-	\deq{\bigg(\sum_{\s\in S_d}a_\s\s\bigg)\cdot\bigg(\sum_{\s\in S_d}b_\s\s\bigg)=\sum_{\s\in S_d}\sum_{\s'\in S_d}a_\s b_{\s'}(\s\cdot\s')\label{eq:formal-expansion}}
+	\deq[eq:formal-expansion]{\bigg(\sum_{\s\in S_d}a_\s\s\bigg)\cdot\bigg(\sum_{\s\in S_d}b_\s\s\bigg)=\sum_{\s\in S_d}\sum_{\s'\in S_d}a_\s b_{\s'}(\s\cdot\s')}
 	\deq{t\cdot\bigg(\sum_{\s\in S_d}a_\s\s\bigg)=\sum_{\s\in S_d}(t a_\s)\s}
 	where $t\in\C$. Expression in the \rhs of \eqref{eq:formal-expansion} (before multiplying $\s$ and $\s'$) is called formal expansion of the product.
 	
@@ -175,7 +175,7 @@ The following functions are very important for our discussion:
 
 \begin{definition}
 	A \emph{class function} on $S_d$ is a map $\a\colon S_d\to\C$ which is constant on conjugacy classes, i.e. $\forall h\in S_d$ we have $\a(\inv hgh)=\a(h)$. Let $\C_\tclass$ denote the vector space of class functions on $S_d$. We define on $\C_\tclass$ the following Hermitian inner product
-	\deq{(\a,\b):=\frac1{d!}\sum_{\s\in S_d}\a(\s)\overline{\b(\s)}=\frac1{d!}\sum_{C\subset S_d}|C|\a(C)\overline{\b(C)} \label{eq:inner-prod-cfunc}}
+	\deq[eq:inner-prod-cfunc]{(\a,\b):=\frac1{d!}\sum_{\s\in S_d}\a(\s)\overline{\b(\s)}=\frac1{d!}\sum_{C\subset S_d}|C|\a(C)\overline{\b(C)}}
  	for any $\a,\b\in \C_\tclass$, where $\sum_C$ runs over the conjugacy classes of $S_d$. 
 \end{definition}
 
@@ -230,9 +230,9 @@ we get that $\{e_\l\ |\ \l\prt d\}$ gives another basis of $\cZ\C[S_d]$
 which will be called \emph{character basis} or \emph{idempotent basis}. Indeed from characters orthogonality (and the fact that $\overline{\c^\l}=\c^\l$) we get
 \deq{e_{\l_i}\cdot e_{\l_j}=\begin{cases}e_{\l_i}\tif e_{\l_i}=e_{\l_j}\\0\quad\text{otherwise}\end{cases}}
 Since $\cZ\C[S_d]$ admits a basis of idempotent elements, then it is a \emph{semisimple algebra}. The formulas for the change of basis are given by the characters
-\deq{e_\l=\frac{\dim \l}{d!}\sum_{\q\prt d}\c^\l(C_\q)c_\q
+\deq[eq:change-basis-class-alg]{e_\l=\frac{\dim \l}{d!}\sum_{\q\prt d}\c^\l(C_\q)c_\q
 \quad\tand\quad
-c_\q=|C_\q|\sum_{\l\prt  d}\frac{\c^\l(C_\q)}{\dim\l}e_\l\label{eq:change-basis-class-alg}}
+c_\q=|C_\q|\sum_{\l\prt  d}\frac{\c^\l(C_\q)}{\dim\l}e_\l}
 where $\dim \l:=\dim V_\l$. 
 
 \section{Burnside's formula}
@@ -274,7 +274,7 @@ From Bournside's formula we see that such coefficients $f_{C_\q}(\l)$ for the ch
 In the following we will restrict ourselves to the case of $g=0$. Recall that there are some degeneration formulas which allows to express all the Hurwitz numbers in terms of those for $g=0$. For a similar discussion for arbitrary $g$ see \cite[§10]{CM}. We will follow instead \cite[§§2.2,2.3]{O1}. 
 
 For $g=0$ the Riemann-Hurwitz formula implies
-\deq{2h-2=-2d+nd-\sum_{i=1}^n\ell(\q_i) \label{eq:RHgenus0}}
+\deq[eq:RHgenus0]{2h-2=-2d+nd-\sum_{i=1}^n\ell(\q_i)}
 and since this fixes $h$ in terms of $(d,\q_1,\ldots,\q_n)$, we simply denote
 \deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_j}(\l)}
 Let $b$ be the number of branch points which have simple ramification, \ie $\q=(2)$. We denote
@@ -285,9 +285,9 @@ Rather than considering the different Hurwitz numbers separately, it worth to co
 
 \begin{definition}
 	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. Then we define the \emph{Hurwitz potential} to be
-	\deq{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
+	\deq[eq:Hur-pot-0]{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)}
 	where for $\q=(l_1,\ldots,l_k)\prt d$ we have
-	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\label{eq:power-sum-sym-pol}}
+	\deq[eq:power-sum-sym-pol]{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})}
 	We also introduce the \emph{modified Hurwitz potential} to be
 	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
 	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
@@ -314,7 +314,7 @@ The first advantage of considering generating function in place of the single Hu
 
 In order to simplify the notation, in the following we denote $\c^\l_\q:=\c^\l(C_\q)$. 
 
-For any $\l\prt d$, we have the following relation\footnote{See \cite[§A, Prop. 4.37, Ex. A.29]{FH} or \cite[Part I]{M}}\todo{Maybe add comments}
+For any $\l\prt d$, we have the following relation\footnote{See \cite[§A, Prop. 4.37, Ex. A.29]{FH} or \cite[Part I]{M}} which can be regarded as corollary of Frobenius formula
 \deq{s_\l(p_1,\ldots,p_d)=\frac1{d!}\sum_{\q\prt d}\c^\l_\q|C_\q|p^\q}
 where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneous polynomial of degree $d$. Putting formulas together we get
 \deq{
@@ -323,9 +323,8 @@ where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneou
 	&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}\left(\frac{\dim \l}{d!}\right)^{2-m}\prod_{i=1}^{m}s_\l(p_{i,1},\ldots,p_{i,d})
 }
 
-The case $m=2$ corresponds to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in. For a reason that will be more clear later we denote the corresponding Hurwitz potential by $\w$
-\deq{\w(p_j,p'_j,q,z)&:=\fH^\bullet(\{p_j,p_j'\},q,z)\\
-&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
+The case $m=2$ corresponds to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in
+\deq{\fH^\bullet(\{p_j,p_j'\},q,z)&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
 	&=\sum_{\l}q^{|\l|} e^{z f_2(\l)}s_\l(P)s_\l(P')}
 where $\sum_\l$ runs over the paritions of arbitrary integers and $|\l|$ is the size of the partition $\l$, $\l\prt|\l|$. We used $P$ and $P'$ to denote the set of variables $\{p_1,p_2,\ldots\}$ and $\{p'_1,p'_2,\ldots\}$ respectively (of course $s_\l$ depends only on the first $|\l|$ variables). 
 
@@ -336,9 +335,9 @@ and
 where 
 \deq{\fz(\q):=\frac{d!}{|C_\q|}}
 We recall the well known fact that for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
-\deq{|C_\q|=\frac{d!}{\prod_{i=1}^{\ell(\q)} \q_i! \,i^{a_i}}}
+\deq{|C_\q|=\frac{d!}{\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}}
 so
-\deq{\fz(\q)=\prod_{i=1}^{\ell(\q)} \q_i! \,i^{a_i}}
+\deq{\fz(\q)=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}
 
 Before moving on, notice that for double Hurwitz numbers the Riemann-Hurwitz formula gives
 \deq{2h=b+2-\ell(\q)-\ell(\q')}
@@ -391,7 +390,7 @@ From the definition of these operators and of the inner product, note that they 
 	\p_j^*\p_k^*+\p_k^*\p_j^*&=0}
 which are known as \emph{fermionic commutation relations}. 
 
-These operators are related to the usual creation and annihilation operators for the \emph{Fermi sea}, by identifying black stones with electrons and white stones with empty energy levels (but note that in usual physical literature, and in \cite{MJD}, one should exchange $\p_k\leftrightarrow\p_k^*$). Finiteness condition amouts to requiring that the considered state is a finite energy excitation of the vacuum in the Fermi sea. We identify the vacuum of the Fermi sea with the vector $\vac=\und{-\frac12}\V\und{-\frac32}\V\und{-\frac52}\V\ldots$, where all stones are black (resp. white) on the right (resp. left) of the origin.
+These operators are related to the usual creation and annihilation operators for the \emph{Fermi sea}, by identifying black stones with electrons and white stones with empty energy levels (but note that in usual physical literature, and in \cite{MJD}, one should exchange $\p_k\leftrightarrow\p_k^*$). Finiteness condition amounts to requiring that the considered state is a finite energy excitation of the vacuum in the Fermi sea. We identify the vacuum of the Fermi sea with the vector $\vac=\und{-\frac12}\V\und{-\frac32}\V\und{-\frac52}\V\ldots$, where all stones are black (resp. white) on the right (resp. left) of the origin.
 
 To see this, note that if $\und k$ is not present in $v_S$ (``the energy level $k$ is empty'') then $\p_k$ add that vector to $v_S$ (''creates the electron'') whereas $\p_k^*$ maps $v_S$ to 0 (``the state is annihilated''). Instead, if $\und k$ is present in $v_S$ (``the energy level $k$ is occupied'') then $\p_k$ maps $v_S$ to 0 (``Pauli principle'') whereas $\p_k^*$ removes that vector from $v_S$ (``the electron at the energy level $k$ is annihilated''). 
 
@@ -409,7 +408,7 @@ which satisfies
 Let's see how we can rewrite the whole quantities
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}\\
 	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}\\
-	\w(p_j,p'_j,q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
+	\fH^\bullet(\{p_j,p_j'\},q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
 in the half infinte wedge space. To do so we should be able to rewrite also quantities $|\l|$, $\c^\l_\q$ and $s_\l(P)$ in terms of matrix elements in the half infinite wedge space. 
 
 We introduce the following operators, called \emph{energy operator} and \emph{charge operators} respectively
@@ -472,7 +471,7 @@ where the \emph{correlator} of the operator $A$ is defined by $\la A\ra:=(v_\emp
 
 
 Now it remains to rewrite
-\deq{\w(p_j,p'_j,q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
+\deq{\fH^\bullet(\{p_j,p_j'\},q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
 To do so we should be able to recover the Schur polynomials from the half infinite wedge formalism. 
 
 Given a sequence $t=(t_1,t_2,\ldots)$ define
@@ -496,17 +495,17 @@ Using the lemma we have
 	=\sum_{\l,\l'}q^{|\l'|}s_\l(P)e^{z f_2(\l')}s_{\l'}(P')\big(v_\l,v_{\l'}\big)\\
 	&\qquad=\sum_{\l}q^{|\l|}s_\l(P)e^{z f_2(\l)}s_{\l}(P')}
 so
-\deq{\w(p_j,p'_j,q,z)=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
+\deq{\fH^\bullet(\{p_j,p_j'\},q,z)=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
 
 Summarizing, we obtained the following formulas
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q \cF_2^b\a_{-\q'}\big\ra\\
 	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra\\
-	\w(p_j,p'_j,q,z)&=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
-The last one was first derived in \cite{O1}, and later the first two were derived in \cite{OP1} (although in a quite different form). In \cite{O1} it was shown also that the $\w$ potential is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\w$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
+	\fH^\bullet(\{p_j,p_j'\},q,z)&=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
+The last one was first derived in \cite{O1}, and later the first two were derived in \cite{OP1} (although in a quite different form). In \cite{O1} it was shown also that the Hurwitz potential $\fH^\bullet$ is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\fH^\bullet$. The technique applied here was later generalized to Gromov-Witten theory in \cite{OP1,OP2}. 
 
 Notice that, by considering the energies of the operators in the correlators, it is clear that we should have $|\q|=|\q'|$ in order to have nonzero values, as expected since we should have $|\q|=d=|\q'|$. 
 
-Introducing other operators it is possible to rewrite the previous correlators in such a way that their computation is much simplified. See \cite{J,OP1,OP2} for more details. In order to simplify the notation, denote
+Introducing other operators it is possible to rewrite the previous correlators in such a way that their explicit computation is much simplified. See \cite{J,OP1,OP2} for more details. In order to simplify the notation, denote
 \deq{E_{ij}=\ \no{\p_j\p_k^*}}
 
 \begin{definition}
@@ -565,11 +564,11 @@ Now we can rewrite the modified Hurwitz potential in a better form which makes c
 \deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra
 	=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\a_{\q_i}\prod_{j=1}^{\ell(\q')}\big(e^{z\cF_2}\a_{-\q'_j}e^{-z\cF_2}\big)\ra\\
 	&=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\cE_{\q_i}(0)\prod_{j=1}^{\ell(\q')}\cE_{-\q'_j}(z\q'_j)\big\ra}
-Using this formula it is possible to compute the previous correlator by commuting the operators with negative energy on the right and those of positive energy on the left. Then only operators of zero energy survive, so we get a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\cE_0(n_1z)\cE_0(n_2z)\cdots$ for some positive integers $m_1,m_2,\ldots,n_1,n_2,\ldots$.
+Using the commutation relation for the operators $\cE$ it is possible to compute the correlator in the previous formula by moving the operators with negative energy on the right and those of positive energy on the left. Then only operators of zero energy survive, so we get a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\cE_0(n_1z)\cE_0(n_2z)\cdots$ for some positive integers $m_1,m_2,\ldots,n_1,n_2,\ldots$.
 Now recall
 \deq{
 	\cE_0(nz)=\sum_{k\in\Z+\frac12}e^{nzk}E_{k-r,k}+\frac1{\vars(nz)}}  
-and $E_{k-r,k}\vac=0$ for all $k,r$. Hence $\la\cE_0(nz)\ra=\inv\vars(nz)$ and we get as final result a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\inv\vars(n_1z)\inv\vars(n_2z)\cdots$.  
+and $E_{k-r,k}\vac=0$ for all $k,r$. Hence $\la\cE_0(nz)\ra=\inv\vars(nz)$ and we get as final result a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\inv\vars(n_1z)\inv\vars(n_2 z)\cdots$.  
 
 
 \begin{example}
