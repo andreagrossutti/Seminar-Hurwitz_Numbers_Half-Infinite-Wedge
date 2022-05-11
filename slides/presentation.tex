@@ -263,21 +263,21 @@ Conversely:
 	
 	Take cycles $\a_1,\ldots\a_g,\b_1,\ldots,\b_g$ in $Y$ generating $\pi_1(Y,y_0)$ all containing a point $p\in Y$ in such a way that $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$ is the fundamental polygon describing $Y$. Denote by $\g_i$ a loop containing $y_0$, winding once around $b_i$, never around the other elements of $B$, and fully contained in $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$.
 	
-	PICTURE
+	\includegraphics[width=\textwidth]{../figures/CM-fig-7-6.pdf}
 	
 \end{frame}
 
 \begin{frame}
-
-	PICTURE
+	\vspace{-10pt}
+	\includegraphics[width=0.9\textwidth]{../figures/CM-fig-7-6.pdf}
 	
 	Consider segments $s_j$ connecting $p$ with the points $b_j$. Open the previous polygon in correspondence of these segments, so that we get a new polygon
 	\deq{P:=s_1\ba{s}_1\cdots s_n\ba{s}_n\a_1\b_1\ba{\a}_1\ba{\b}_1\cdots\a_g\b_g\ba{\a}_g\ba{\b}_g}
-	Then it suffices to take $d$ copies of $P$ and glue their boundaries appropriately to produce $X^0$ in such a way that the natural projection to $Y\setminus B$ has the desired monodromy representation:
+	Then it suffices to take $d$ copies of $P$ and glue their boundaries appropriately to produce $X^0$ in such a way that the natural projection to $Y\setminus B$ has the desired monodromy representation:\\[-10pt]
 	\deq{s_{j,k}&\sim\ba s_{j,\F(\g_j)(k)}\\
 		\ba\a_{i,k}&\sim \a_{i,\F(\b_i)(k)}\\
-		\b_{i,k}&\sim \ba\b_{i,\F(\a_i)(k)}}
-
+		\b_{i,k}&\sim \ba\b_{i,\F(\a_i)(k)}}\\[-10pt]
+	
 	\hfill$\blacksquare$
 \end{frame}
 
@@ -399,10 +399,13 @@ where $\dim \l:=\dim V_\l$.
 Recall that 
 \vspace{-3mm}
 \deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\bullet|}{d!}}
-where $M^\bullet$ is the set of monodromy representations of type $(g,d,\q_1,\ldots,\q_r)$.
+
+For $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ where $i\in\Z_{\geq1}$ appears $a_i$ times in the partition, $\sum_i ia_i=d$, the size of the centralizer of $C_\q$ is given by\\[-8pt]
+\deq{\fz(\q)=\frac{d!}{|C_\q|}=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}\\[-8pt]
+
 \begin{definition}
-	Let $d\in\Z_{\geq1}$, $\q\prt d$. Denote by $\x(\q)$ the centralizer of $C_\q$. We define the \emph{kommutator} to be the element
-	\deq{\mathfrak K:=\sum_{\q\prt d}|\x(\q)|c_\q^2\in\cZ\C[S_d]}
+	Let $d\in\Z_{\geq1}$, $\q\prt d$. We define the \emph{kommutator} to be the element
+	\deq{\mathfrak K:=\sum_{\q\prt d}\fz(\q)c_\q^2\in\cZ\C[S_d]}
 \end{definition}
 
 \begin{theorem}
@@ -424,7 +427,7 @@ By changing basis from the conjugacy basis to the idempotent basis we get
 
 Recall that from the change of basis formula, 
 \deq{c_\q=\sum_{\l\prt d}f_{C_\q}(\l)e_\l}
-From Bournside's formula we see that such coefficients $f_{C_\q}(\l)$ for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
+From Burnside's formula we see that such coefficients $f_{C_\q}(\l)$ for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
 
 \end{frame}
 
@@ -455,7 +458,7 @@ Rather than considering the different Hurwitz numbers separately, it worth to co
 	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\vspace{-7pt}}
 	We also introduce the \emph{modified Hurwitz potential} to be
 	\vspace{-2pt}
-	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
+	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{b!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
 	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
 \end{definition}
 
@@ -477,7 +480,7 @@ The first advantage of considering generating function in place of the single Hu
 
 \begin{theorem}
 	\vspace{-5pt}
-	\deq{1+\fH^\bullet=e^{\fH^\circ}}
+	\deq{\fH^\bullet=e^{\fH^\circ}}
 \end{theorem}
 
 \end{frame}
@@ -506,18 +509,6 @@ The case $m=2$ corresponds to the so called \emph{double Hurwitz numbers}, which
 We denoted $P:=\{p_1,p_2,\ldots\}$ and $P':=\{p'_1,p'_2,\ldots\}$ (of course $s_\l$ depends only on the first $|\l|$ variables of each set). For $m=2$ we also have
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}\\
 	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}}
-where, for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
-\deq{\fz(\q):=\frac{d!}{|C_\q|}}
-
-\end{frame}
-
-\begin{frame}
-
-We recall the well known fact that for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
-\deq{|C_\q|=\frac{d!}{\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}}
-so
-\deq{\fz(\q)=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}
-
 Before moving on, notice that for double Hurwitz numbers the Riemann - Hurwitz formula gives
 \deq{2h=b+2-\ell(\q)-\ell(\q')}
 
@@ -531,12 +522,12 @@ Before moving on, notice that for double Hurwitz numbers the Riemann - Hurwitz f
 
 
 
-Given a partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram. Let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper left to the lower right.\\
+Given a partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram. Let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper right to the lower left.\\
 We call $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ and $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ the \emph{Frobenius notation} and the  \emph{modified Frobenius notation} of the partition respectively, where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. 
 
-
-PICTURE
-
+\vspace{-1.5em}
+\[\vspace{-2pt}\begin{matrix}\includegraphics[width=10em]{../figures/FH-pag-51.pdf} &\hspace{-0pt}\raisebox{1.2cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&5\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&5.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
+\vspace{-1.5em}
 
 \begin{lemma}[Frobenius formula for $C_{(2)}$]
 	\vspace{-6pt}
@@ -550,9 +541,9 @@ PICTURE
 From Frobenius formula and $|C_{(2)}|=\begin{pmatrix}d\\2\end{pmatrix}$ it follows that 
 \deq{f_2(\l)=\frac{|C_{(2)}|}{\dim \l}\c^\l(C_{(2)})=\frac12\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}
 
-Draw the Young diagram of $\l$ over the real line with opposite orientation as in the picture. 
+Draw the Young diagram of $\l$ rotated by $135^\circ$ over the real line with opposite orientation as in the picture. 
 
-PICTURE
+\[\includegraphics[]{../figures/J-fig-1.pdf}\]
 
 \end{frame}
 
@@ -639,7 +630,7 @@ It satisfies\\[-15pt]
 \deq{\cF_2v_\l=f_2(\l)v_\l}
 
 \begin{definition}
-We define the following operators, called \emph{energy operator} and \emph{charge operators} respectively\\[-15pt]
+We define the following operators, called \emph{energy operator} and \emph{charge operator} respectively\\[-15pt]
 \deq{H:=\sum_{k\in\Z+1/2}k\no{\p_k\p_k^*}
 	\qquad
 	C:=\sum_{k\in\Z+1/2}\no{\p_k\p_k^*}}
@@ -696,11 +687,20 @@ is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner 
 
 \begin{frame}
 
-The two basis of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that 
+The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that 
+\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
+where $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. 
+
+\[\includegraphics[width=\textwidth]{../figures/J-fig-2.pdf}\]
+
+\end{frame}
+
+\begin{frame}
+
+The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that 
 \deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
 where $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. Compare to
 \begin{lemma}[\emph{Murnaghan-Nakayama rule}]
-	\vspace{-4pt}
 	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}\c^{\l'}_\q}
 \end{lemma}
 Using these identities we get that for any two partitions $\l$ and $\q$ \st $|\l|=|\q|$ 
@@ -709,6 +709,7 @@ and taking the adjoint
 \deq{\a_{-\q}\vac=\sum_{\l\prt |\q|}\c_\q^\l v_\l}
 
 \end{frame}
+
 
 \section{Hurwitz numbers in the half infinite wedge space}
 
@@ -810,7 +811,7 @@ For $r\neq0$ we don't have any problem since $E_{k-r,k}=\p_{k-r}\p_k^*$.
 \begin{frame}
 
 \begin{definition}
-	For $k\in\Z_{>0}$ define operators $\cF_k$ and $\cP_k$ by
+	For $k\in\Z_{>0}$ (re)define operators $\cF_k$ and $\cP_k$ by
 	\deq{\cF_k=\frac{\cP_k}{k!}=[z^k]\cE_0(z)}
 	where $[z^k]\cE_0(z)$ stands for the coefficient of $z^k$ in $\cE_0(z)$. 
 \end{definition}

@@ -1,10 +1,12 @@
-\documentclass[a4paper,11pt,twoside,openright,leqno]{report}
+\documentclass[a4paper,11pt,twoside,openright,leqno]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[top=4.3cm,bottom=3.2cm,inner=3.2cm,outer=2.7cm]{geometry}
 \usepackage{amssymb,amsmath,amsthm,amsfonts,mathtools}
+\usepackage[affil-it]{authblk}
+\usepackage{graphicx}
 %\usepackage[pdftex]{graphicx} %per poter inserire le figure
 %\usepackage{xspace}
 %\usepackage{tabularx}
@@ -76,8 +78,8 @@
 \theoremstyle{remark}
 \newtheorem{remark}[equation]{Remark}
 
-\numberwithin{section}{chapter}
-\numberwithin{equation}{chapter}
+%\numberwithin{section}{chapter}
+%\numberwithin{equation}{chapter}
 
 %APPENDICIE
 \usepackage[toc]{appendix}
@@ -93,26 +95,40 @@
 \newcommand{\mathcenter}{\@fleqnfalse}
 \makeatother
 
+\title{Double Hurwitz numbers in half infinite wedge space \\{\Large From geometry to operators}}
+\author{Andrea Grossutti%
+	\thanks{\texttt{agrossut@sissa.it}}}
+\affil{SISSA}
+\date{May 2022}
+
 \begin{document}
 
-\pagenumbering{roman}
+%\pagenumbering{roman}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\begin{abstract}
+Double Hurwitz numbers count maps between \rss\ with non-simple ramification at (at most) two points of the target surface. In this notes we considered the case where the target surface has genus 0. The double Hurwitz numbers are here described in the half infinite wedge formalism, providing formulas for these numbers in terms of correlators of operators defined on an infinite dimensional vector space and satisfying a bosonic algebra. An algorithm for the explicit computation is given. Preliminary notions of Hurwitz numbers, Burnside's formula and half infinite wedge formalism are reviewed as well. None of the results exposed here are original, the aim of these notes is to review some of the results described in the references. 
+\end{abstract}
 
 %    Table of contents
-\setcounter{tocdepth}{3}
+%\setcounter{tocdepth}{3}
 \thispagestyle{empty}
 \tableofcontents
-\thispagestyle{empty}
-\newpage
-\thispagestyle{empty}
-\clearpage\null\newpage
-\thispagestyle{empty}
+%\thispagestyle{empty}
+%\newpage
+%\thispagestyle{empty}
+%\clearpage\null\newpage
+%\thispagestyle{empty}
 
 
 %    Include main chapters here.
-\pagenumbering{arabic}
-\setcounter{page}{1}
+%\pagenumbering{arabic}
+%\setcounter{page}{1}
 \subfile{../subfiles/chap1}
-\clearpage{\pagestyle{empty}\cleardoublepage}
+%\clearpage{\pagestyle{empty}\cleardoublepage}
 %\subfile{../subfiles/chap2}
 %\clearpage{\pagestyle{empty}\cleardoublepage}
 

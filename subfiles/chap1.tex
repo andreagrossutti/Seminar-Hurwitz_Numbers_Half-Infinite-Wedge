@@ -1,12 +1,9 @@
 \documentclass[../main/main.tex]{subfiles}
 \begin{document}
 
-\chapter{Hurwitz Numbers}
-
 \section{Maps of \rss\ and \hnn}
 
 In the following we will assume the \rss\ that we will consider to be \cpt\ and connected. Let $f\colon X\to Y$ be a non-\const\ \holo\ map of \rss\ (hence surjective\footnote{\cite[Thm. 4.3.1]{CM}})
-\todo{Check where connectedness is needed.}
 
 \begin{definition}
 	\begin{itemize}
@@ -119,7 +116,11 @@ Conversely:
 \begin{proof}[Sketch of proof]
 	In the proof of this result the Riemann's Existence theorem is fundamental. We construct explicitly the topological space $X_0$ and the covering $f^0\colon X^0\to Y\setminus B$ in such a way that the map $f\colon X\to Y$ given by the Riemann's Existence theorem has the desired monodomy representation. 
 	
-	Take cycles $\a_1,\ldots\a_g,\b_1,\ldots,\b_g$ in $Y$ generating $\pi_1(Y,y_0)$ all containing a point $p\in Y$ in such a way that $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$ is the fundamental polygon describing $Y$. Denote by $\g_i$ a loop containing $y_0$, winding once around $b_i$, never around the other elements of $B$, and fully contained in $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$.\todo{picture}
+	Take cycles $\a_1,\ldots\a_g,\b_1,\ldots,\b_g$ in $Y$ generating $\pi_1(Y,y_0)$ all containing a point $p\in Y$ in such a way that $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$ is the fundamental polygon describing $Y$. Denote by $\g_i$ a loop containing $y_0$, winding once around $b_i$, never around the other elements of $B$, and fully contained in $Y\setminus\{\a_1,\ldots\a_g,\b_1,\ldots,\b_g\}$.
+	
+	
+
+	\includegraphics[]{../figures/CM-fig-7-6.pdf}
 	
 	Consider segments $s_j$ connecting $p$ with the points $b_j$. Open the previous polygon in correspondence of these segments, so that we get a new polygon
 	\deq{P:=s_1\ba{s}_1\cdots s_n\ba{s}_n\a_1\b_1\ba{\a}_1\ba{\b}_1\cdots\a_g\b_g\ba{\a}_g\ba{\b}_g}
@@ -243,17 +244,20 @@ Recall that
 \deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\bullet|}{d!}}
 where $M^\bullet$ is the set of monodromy representations of type $(g,d,\q_1,\ldots,\q_r)$ with $\q_1,\ldots,\q_n$ partitions of $d$. 
 
+For $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ where $i\in\Z_{\geq1}$ appears $a_i$ times in the partition, $\sum_i ia_i=d$, the size of the centralizer of $C_\q$ is given by
+\deq{\fz(\q)=\frac{d!}{|C_\q|}=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}
+
 In order to account for the case $g\neq0$ one needs 
 \begin{definition}
-	Let $d\in\Z_{\geq1}$, $\q\prt d$. Denote by $\x(\q)$ the centralizer of $C_\q$. We define the \emph{kommutator} to be the element
-	\deq{\mathfrak K:=\sum_{\q\prt d}|\x(\q)|c_\q^2\in\cZ\C[S_d]}
+	Let $d\in\Z_{\geq1}$, $\q\prt d$. We define the \emph{kommutator} to be the element
+	\deq{\mathfrak K:=\sum_{\q\prt d}\fz(\q)c_\q^2\in\cZ\C[S_d]}
 \end{definition}
 
 Then we have the following
 \begin{proposition}[{\cite[Prop. 9.2.3]{CM}}]
 	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac1{d!}[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}}
 	where $[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}$ denotes the coefficient of $c_e$ after writing the product $\mathfrak K^gc_{\q_n}\ldots c_{\q_2}c_{\q_1}$ as a linear combination of the basis elements $c_\q\in\cZ\C[S_d]$. As usual $h$ is determined by Riemann-Hurwitz formula. 
-\end{proposition}\todo{Maybe add proof for case $g=0$.}
+\end{proposition}
 
 By changing basis from the conjugacy basis to the idempotent basis we get
 
@@ -266,7 +270,7 @@ By changing basis from the conjugacy basis to the idempotent basis we get
 
 Recall that from the change of basis formula, 
 \deq{c_\q=\sum_{\l\prt d}f_{C_\q}(\l)e_\l}
-From Bournside's formula we see that such coefficients $f_{C_\q}(\l)$ for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
+From Burnside's formula we see that such coefficients $f_{C_\q}(\l)$ for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
 
 
 \section{The generating function}
@@ -284,12 +288,12 @@ where $f_2:=f_{C_{(2)}}$. Analogous definitions hold for connected Hurwitz numbe
 Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. Fix $m\in\Z_{\geq0}$ to be the number of branch points with non-simple ramification profile. Then
 
 \begin{definition}
-	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. Then we define the \emph{Hurwitz potential} to be
+	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. Then we define the \emph{Hurwitz potential} to be\footnote{For $d=0$ we set $H_{d,b}^\bullet(\q_1,\ldots,\q_m)=0$, this is consistent with the fact that there is no covering of degree zero.}
 	\deq[eq:Hur-pot-0]{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)}
 	where for $\q=(l_1,\ldots,l_k)\prt d$ we have
 	\deq[eq:power-sum-sym-pol]{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})}
 	We also introduce the \emph{modified Hurwitz potential} to be
-	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{d!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
+	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{b!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
 	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
 \end{definition}
 
@@ -309,7 +313,7 @@ We see that in the expansion of the Hurwitz potential
 The first advantage of considering generating function in place of the single Hurwitz numbers is 
 
 \begin{theorem}[{\cite[Thm. 10.2.1]{CM}}]
-	\deq{1+\fH^\bullet=e^{\fH^\circ}}
+	\deq{\fH^\bullet=e^{\fH^\circ}}
 \end{theorem}
 
 In order to simplify the notation, in the following we denote $\c^\l_\q:=\c^\l(C_\q)$. 
@@ -332,12 +336,6 @@ For the case $m=2$ we also have
 \deq{H^\bullet_{d,b}(\q,\q')=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}}
 and
 \deq{\fh^\bullet_d(\q,\q')=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}}
-where 
-\deq{\fz(\q):=\frac{d!}{|C_\q|}}
-We recall the well known fact that for $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ given by $a_i$ cycles of length $i$, $\sum_i ia_i=d$,
-\deq{|C_\q|=\frac{d!}{\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}}
-so
-\deq{\fz(\q)=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}
 
 Before moving on, notice that for double Hurwitz numbers the Riemann-Hurwitz formula gives
 \deq{2h=b+2-\ell(\q)-\ell(\q')}
@@ -346,7 +344,11 @@ Before moving on, notice that for double Hurwitz numbers the Riemann-Hurwitz for
 
 Here we want to rewrite $f_2(\l)$ in a different way using Frobenius formula. We did not wrote the general Frobenius formula, since it is quite complicated. However it has a nicer expression in the special case of $\c^\l(C_{(2)})$, that is the case needed to compute $f_2(\l)$.
 
-For a given partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram, and let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper left to the lower right. Then $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ is called \emph{Frobenius notation} of the partition. \todo{Add picture, FH pag 51} Let also define the \emph{modified Frobenius notation} to be $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. Then
+For a given partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram, and let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper right to the lower left. Then $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ is called \emph{Frobenius notation} of the partition. 
+
+\[\begin{matrix}\includegraphics[]{../figures/FH-pag-51.pdf} &\raisebox{1.5cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&5\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&5.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
+
+Let also define the \emph{modified Frobenius notation} to be $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. Then
 	
 \begin{lemma}[Frobenius formula {\cite[Ex. 4.17(c)]{FH}}]
 	\deq{\c^\l(C_{(2)})=\frac{\dim\l}{d(d-1)}\sum_{i=1}^r(a_i(a_i+1)-b_i(b_i+1))=\frac{\dim\l}{d(d-1)}\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}
@@ -355,7 +357,11 @@ For a given partition $\l$, define its rank $r$ to be the length of the diagonal
 From this and $|C_{(2)}|=\begin{pmatrix}d\\2\end{pmatrix}$ it follows that 
 \deq{f_2(\l)=\frac{|C_{(2)}|}{\dim \l}\c^\l(C_{(2)})=\frac12\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}
 
-Draw the Young diagram of $\l$ over the real line with opposite orientation as in the picture \todo{picture} and consider the black and white stones as showed. Suppose that $\l$ is made of $k=\ell(\l)$ cycles of lengths $\{\l_1,\ldots,\l_k\}$ where $\l_1\geq\l_2\geq\ldots$. Now consider the ordered set $\{\ti\l_i\}_{i\in\Z_{\geq0}}=\{\l_1,\ldots,\l_k,0,0,\ldots\}$ ending with infinitely many zeros. Then it is clear that black stones are placed in correspondence to elements of 
+Draw the Young diagram of $\l$ rotated by $135^\circ$ over the real line with opposite orientation as in the picture and consider the black and white stones as showed. 
+
+\[\includegraphics[]{../figures/J-fig-1.pdf}\]
+
+Suppose that $\l$ is made of $k=\ell(\l)$ cycles of lengths $\{\l_1,\ldots,\l_k\}$ where $\l_1\geq\l_2\geq\ldots$. Now consider the ordered set $\{\ti\l_i\}_{i\in\Z_{\geq0}}=\{\l_1,\ldots,\l_k,0,0,\ldots\}$ ending with infinitely many zeros. Then it is clear that black stones are placed in correspondence to elements of 
 \deq{\fS_\bullet(\l):=\{\ti\l_i-i+1/2\}\subset\Z+\frac12}
 and white stones in correspondence to elements of $\fS_\circ(\l):=(\Z+\frac12)\setminus\fS_\bullet(\l)$. Moreover, the coefficients in the modified Frobenius notation are given by
 \deq{\{a'_i\}&=\fS_\bullet^+(\l):=\fS_\bullet\cap(\Z_{\geq0}+1/2)\\
@@ -411,7 +417,7 @@ Let's see how we can rewrite the whole quantities
 	\fH^\bullet(\{p_j,p_j'\},q,z)&=\sum_{\l}q^{|\l|} s_\l(P)e^{z f_2(\l)}s_\l(P')}
 in the half infinte wedge space. To do so we should be able to rewrite also quantities $|\l|$, $\c^\l_\q$ and $s_\l(P)$ in terms of matrix elements in the half infinite wedge space. 
 
-We introduce the following operators, called \emph{energy operator} and \emph{charge operators} respectively
+We introduce the following operators, called \emph{energy operator} and \emph{charge operator} respectively
 \deq{H:=\sum_{k\in\Z+1/2}k\no{\p_k\p_k^*}
 	\qquad
 	C:=\sum_{k\in\Z+1/2}\no{\p_k\p_k^*}}
@@ -447,7 +453,9 @@ The Heisenberg commutation relation ensures that the ordering of the multiplied 
 \deq{\{\a_{-\q}\vac\,\big|\,\q\prt d\}}
 is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner product $(-,-)$. To see this it suffices to prove that $\a_{\q'}\a_{-\q}\vac\propto \d_{\q,\q'}\vac$.
 
-The two basis of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that \todo{add picture}
+The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. From the following picture
+\[\includegraphics[width=\textwidth]{../figures/J-fig-2.pdf}\]
+we can see that 
 \deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
 where $\l'<\l$ means that $\l'_i<\l_i$ for all $i\leq\ell(\l)$ and $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. This is very similar to
 \begin{lemma}[\emph{Murnaghan-Nakayama rule} {\cite[Ex. 4.45]{FH}}]
