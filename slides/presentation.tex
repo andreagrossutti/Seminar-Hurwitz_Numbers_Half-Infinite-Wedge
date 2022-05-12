@@ -1,4 +1,5 @@
-\documentclass[10pt]{beamer}
+%\documentclass[10pt]{beamer}		%with pauses
+\documentclass[10pt,handout]{beamer} %without pauses
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -19,7 +20,7 @@
 \setbeamertemplate{footline}[frame number]{}
 
 %gets rid of bottom navigation symbols
-%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{navigation symbols}{}
 
 %gets rid of footer
 %will override 'frame number' instruction above
@@ -52,7 +53,7 @@
 \title[Hurwitz numbers in half infinite wedge space] %optional
 {Hurwitz numbers in half infinite wedge space}
 
-\subtitle{From geometry to operators}
+\subtitle{From geometry to correlators}
 
 \author[Arthur, Doe] % (optional)
 {Andrea Grossutti}
@@ -70,7 +71,7 @@
 
 \date[VLC 2021] % (optional)
 {%Very Large Conference, 
-	May 2021}
+	May 2022}
 
 %End of title page configuration block
 %------------------------------------------------------------
@@ -110,41 +111,15 @@
 
 \begin{frame}
 
-Let $f\colon X\to Y$ be a (non-\const\ \holo) map of (\cpt) and connected \rss\ (hence surjective).
-
-\begin{definition}
-	\begin{itemize}
-		\item The \emph{ramification index} of $f$ at $x\in X$ is the integer $k_x\in\Z_{\geq1}$ \st $f$ is locally of the form $z^k$, where $z$ is a local coordinate centered in $x$. 
-		\item The \emph{differential length} of $f$ at $x\in X$ is $\nu_x=k_x-1$.
-		\item A point $x\in X$ \st $\nu_x>0$ is called a \emph{ramification point}. The \emph{ramification locus} of $f$ is the set of its ramification points. If $\n_x=0$ we say that $f$ is \emph{unramified} at $x$. If $\n_x=1$ we say that $f$ has \emph{simple ramification} at $x$. 
-		\item If $x\in X$ is a ramification point, then $f(x)\in Y$ is called a \emph{branch point}. The \emph{branch locus} $B_f$ of $f$ is the set of its branch points.
-	\end{itemize}
-\end{definition}
-
-For any $y,y'\in Y\setminus B_f$ we have $|\inv f(y)|=|\inv f(y')|$. 
-
-\begin{definition}
-	\vspace{-5pt}
-	\deq{\deg f\defeq|\inv f(y)|\tcomma y\in Y\setminus B_f\ .}
-\end{definition}
-
-\end{frame}
-
-%--------------------------------------------------------
-
-\begin{frame}
-
-For any $y\in Y$, $\inv f(y)=\{x_1,\ldots,x_n\}$, we have $d:=\deg f=\sum_ik_{x_i}$.
-
-\begin{definition}
-	We call \emph{ramification profile} of $f$ at $y$ the partition of $d$ given by $(k_{x_1},\ldots,k_{x_n})$. We say that $f$ is \emph{unramified} / \emph{simply ramified} / \emph{fully ramified} if its ramification profile is $(1,\ldots,1)$ / $(2,1,\ldots,1)$ / $(d)$ respectively.
-\end{definition}
+Let $f\colon X\to Y$ be a (non-\const\ \holo) map of (\cpt) and connected \rss\ (hence surjective). \\
+For any $y\in Y$, $\inv f(y)=\{x_1,\ldots,x_n\}$, we have $\deg f=\sum_ik_{x_i}$, where $k_x$ denotes the ramification index of $f$ at $x$. We call \emph{ramification profile} of $f$ at $y$ the partition of $d$ given by $(k_{x_1},\ldots,k_{x_n})$. \pause
 
 \begin{theorem}[Riemann-Hurwitz]
-	Let $g_X$ and $g_Y$ denote the genus of $X$ and $Y$ respectively. Then
-	\deq{\underbrace{2g_X-2}_{\c(X)}=(\underbrace{2g_Y-2}_{\c(Y)})\deg f+\sum_{x\in X}\nu_x}
+	Let $h$ and $g$ denote the genus of $X$ and $Y$ respectively. Then
+	\deq{\underbrace{2h-2}_{\c(X)}=(\underbrace{2g-2}_{\c(Y)})\deg f+\sum_{x\in X}\nu_x}
+	where $\n_x:=k_x-1$ is the \emph{differential length} of $f$ at $x$.
 \end{theorem}
-
+\pause
 \begin{definition}
 	$f\colon X\to Y$ and $g\colon\ti X\to Y$ are \emph{isomorphic} if there is $\f\colon X\overset\sim\to\ti X$ \st $f=g\circ \f$. 
 	
@@ -165,7 +140,7 @@ For any $y\in Y$, $\inv f(y)=\{x_1,\ldots,x_n\}$, we have $d:=\deg f=\sum_ik_{x_
 	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|}}
 	and the \emph{(disconnected) (degree $d$) Hurwitz number} to be
 	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|} \label{eq:disc-H-numb}}
-	where both sums runs over isomorphism classes of degree $d$ \holo\ maps $f\colon X\to Y$ \st
+	where both sums runs over isomorphism classes of \emph{Hurwitz covers}, \ie degree $d$ \holo\ maps $f\colon X\to Y$ \st
 	\begin{itemize}
 		\item $X$ is a \cpt\ RS of genus $h$
 		\item the branch locus of $f$ is $B$
@@ -182,7 +157,7 @@ For any $y\in Y$, $\inv f(y)=\{x_1,\ldots,x_n\}$, we have $d:=\deg f=\sum_ik_{x_
 
 \begin{frame}
 
-Maps of \rss\ are ramified covers:
+Recall that maps of \rss\ can be regarded as ramified covers.
 
 \begin{definition}
 	A \emph{ramified cover} is a continuous function between compact topological surfaces $f\colon X\to Y$ with a finite set $B\subset Y$ \st
@@ -191,11 +166,11 @@ Maps of \rss\ are ramified covers:
 		\item $f\colon X\setminus\inv f(B)\to Y\setminus B$ is a covering.
 	\end{itemize}
 \end{definition}
-
+\pause
 Vice-versa, we have
 
 \begin{theorem}[Riemann's Existence Thm.] 
-	Let $Y$ \cpt\ \rs, $X^0$ topological surface, $\{b_1,\ldots,b_n\}\subset Y$ finite subset, $f^0\colon X^0\to Y\setminus\{b_1,\ldots,b_n\}$ covering of finite degree. Then there exists a unique (up to isomorphisms) \cpt\ \rs\ $X$ \st
+	Let $Y$ \cpt\ \rs, $X^0$ topological surface, $B=\{b_1,\ldots,b_n\}\subset Y$ marked points, $f^0\colon X^0\to Y\setminus B$ covering of finite degree. Then there exists a unique (up to isomorphisms) \cpt\ \rs\ $X$ \st
 	\begin{itemize}
 		\item $X^0$ is a dense subset of $X$,
 		\item $f^0$ extends to a \holo\ map of \rss\ $f\colon X\to Y$.
@@ -214,7 +189,7 @@ This will be useful to reconstruct $X$ and $f$ given $Y$ and some additional dat
 	The map $f\colon X\to Y$ is said \emph{$y_0$-labelled} if $y_0\in Y\setminus B_f$ and is chosen an isomorphism $L\colon \inv f(y_0)\overset\sim\to \{1,\ldots,d\}$. We also say that $L$ is a \emph{labelling}. An \emph{isomorphism of $y_0$-labelled maps} $(f,L)$ and $(f',L')$ is an isomorphism of \rss\ $\f\colon X\to X'$ \st 
 	\deq{f'\circ\f=f\tand L'\circ\f=L}
 \end{definition}
-
+\pause
 \begin{definition}
 	A $y_0$-labelled map $f\colon X\to Y$ determines a group homomorphism 
 	\deq{
@@ -223,7 +198,7 @@ This will be useful to reconstruct $X$ and $f$ given $Y$ and some additional dat
 	called \emph{monodromy representation}.
 \end{definition}
 
-We have that $(f,L)\cong(f',L')$ imply $\F=\F'$.
+
 
 \end{frame}
 
@@ -231,27 +206,28 @@ We have that $(f,L)\cong(f',L')$ imply $\F=\F'$.
 
 \begin{frame}
 
-Now consider $b\in B_f$ and $\g\in\u_1(Y\setminus B_f,y_0)$ simple loop winding once around $b$ (and with zero winding number around the other branch points). If the ramification profile of $f$ at $b$ is $\q=(k_1,\ldots,k_l)$, then $\s_\g$ has cycle type $\q$ (to see this recall that the local expression of $f$ around ramification points is $z^k$ and consider a circle around $y_0$ of unit radius in the chart).
-
 \begin{definition}
 	Let $Y$ be a connected \rs\ of genus $g$, $y_0,b_1,\ldots,b_n\in Y$ points, $d\in\Z_{\geq1}$ and $\q_1,\ldots,\q_n\prt d$. A \emph{monodromy representation of type} $(g,d,\q_1,\ldots,\q_n)$ is a group homomorphism $\F\colon\u_1(Y\setminus\{b_1,\ldots,b_n\},y_0)\to S_d$ \st if $\g_k$ is a small loop around $b_k$ then $\F(\g_k)$ has cycle type $\q_k$.
 	
 	If moreover the subgroup $\im \F\subset S_d$ acts transitively on $\{1,2,\ldots,d\}$ we say that $\F$ is a \emph{connected monodromy representation of type} $(g,d,\q_1,\ldots,\q_n)$.
 	
 \end{definition}
+\pause
+We have that $(f,L)\cong(f',L')$ imply $\F=\F'$.
 
-Note that if two labellings $L,L'$ of $f\colon X\to Y$ are given, then $L'=\s\cdot L$ for some $\s\in S_d$ and $\F'(\g)=\s\cdot\F(\g)\cdot\inv\s$. In particular the type of the monodromy representation does note depend on the chosen labelling. 
+Note also that if two labellings $L,L'$ of $f\colon X\to Y$ are given, then $L'=\s\cdot L$ for some $\s\in S_d$ and $\F'(\g)=\s\cdot\F(\g)\cdot\inv\s$. So monodromy representations of $(f,L)$ and $(f,L')$ are of the same type.
 
 \end{frame}
 
 \begin{frame}
 
-We obtained that a degree $d$ map $f\colon X\to Y$ between \cpt\ connected \rss\ \st the ramification profile over each branch point is $\q_i$ gives rise to a connected monodromy representation $\F$ of type $(g_Y,d,\q_1,\ldots,\q_n)$. If we let $X$ to be non connected, then the monodromy representation may not be connected anymore, more precisely: the monodromy representation is connected \tiff $X$ is connected. We also have that isomorphic maps give the same monodromy representation. 
+A degree $d$, $y_0$-labelled map $(f,L)$ between \cpt\ \rss\ \st the ramification profile over each branch point is $\q_i$ gives rise to a monodromy representation $\F$ of type $(g,d,\q_1,\ldots,\q_n)$. The monodromy representation will be connected if and only if $X$ is connected. 
+\pause
 
 Conversely:
 
 \begin{theorem}
-	Let $Y$ be a \rs\ of genus $g$, $\F$ a monodromy representation of type $(g,d,\q_1,\ldots,\q_n)$, $B=\{b_1,\ldots,b_n\}\subset Y$ a finite subset. Then exists a $y_0$-labelled \holo\ map of \rs\ covering $Y$ with branch locus $B$ whose associated monodromy is $F$. Such map is unique up to isomorphisms of $y_0$-labelled maps. 
+	Let $Y$ be a \rs\ of genus $g$, $\F$ a monodromy representation of type $(g,d,\q_1,\ldots,\q_n)$, $B=\{b_1,\ldots,b_n\}\subset Y$ a finite subset. Then exists a $y_0$-labelled \holo\ map of \rs\ covering $Y$ with branch locus $B$ whose associated monodromy is $\F$. Such map is unique up to isomorphisms of $y_0$-labelled maps. 
 \end{theorem}
 
 \end{frame}
@@ -283,7 +259,7 @@ Conversely:
 
 \begin{frame}
 
-The previous theorem ensures that we have a bijection between isomorphism classes of $y_0$-labeled Hurwitz covers and connected monodromy representations of type $(g,d,\q_1,\ldots,\q_n)$. Then we can prove
+The previous theorem ensures that we have a bijection between isomorphism classes of $y_0$-labeled Hurwitz covers and monodromy representations of type $(g,d,\q_1,\ldots,\q_n)$. \pause Then we can prove
 
 \begin{theorem}
 	Let $M^\circ$ (resp $M^\bullet$) be the set of connected monodromy representations (resp. monodromy representations) of type $(g,d,\q_1,\ldots,\q_n)$. Then
@@ -307,17 +283,20 @@ The previous theorem ensures that we have a bijection between isomorphism classe
 	From the previous theorem isomorphism classes of $y_0$-labelled maps for the given $f$ are in bijection with the distinct monodromy representations arising from $f$ by different labelings of $\inv f(y_0)$. Therefore 
 	\deq{m_f=\frac{d!}{|\Aut(f)|}}
 	where $m_f$ the number of distinct monodromy representations arising from $f$ by different labelings of $\inv f(y_0)$. So we have
-	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|}=\sum_{[f]}\frac{m_f}{d!}=\frac{|M^\circ|}{d!}}\\[-5mm]
+	\deq{H^\circ_{h\overset d\to g}(\q_1,\ldots,\q_n):=\sum_{[f]}\frac1{|\Aut(f)|}=\sum_{[f]}\frac{m_f}{d!}=\frac{|M^\circ|}{d!}}
+	where in the last step we used again previous theorem.
 	\hfill$\blacksquare$
 \end{frame}
 
 \begin{frame}
 
-Although the information carried by connected Hurwitz numbers is usually more interesting for geometrical purposes, it turns out that it is easier to compute the (possibly disconnected) Hurwitz numbers. We will see later how it is possible to recover the connected Hurwitz numbers from the disconnected ones. 
+Although the information carried by connected Hurwitz numbers is usually more interesting for geometrical purposes, it turns out that it is easier to compute the (possibly disconnected) Hurwitz numbers. We will see later how it is possible to recover the connected Hurwitz numbers from the disconnected ones. \pause
 
-We mention that using some ``degeneration formulas'' (which heuristically correspond to shrink the \rs\ Y producing nodal curves) all disconnected degree $d$ Hurwitz numbers are determined in therms of Hurwitz numbers of the form $H^\bullet_{h\overset d\to0}(\q_1,\q_2,\q_3)$. For this reason (and others) we later restrict our discussion to the case $g=0$. 
+\vspace{\baselineskip}
 
+We mention that using some ``degeneration formulas'' (which heuristically correspond to shrink the \rs\ Y producing nodal curves) all disconnected degree $d$ Hurwitz numbers are determined in therms of Hurwitz numbers of the form $H^\bullet_{h\overset d\to0}(\q_1,\q_2,\q_3)$. For this reason (and others) we later restrict our discussion to the case $g=0$. \pause
 
+\vspace{\baselineskip}
 
 Using the last theorem the problem of computing degree $d$ Hurwitz numbers can be translated into a problem in representation theory of the symmetric group $S_d$. In order to show this we need some facts about representation theory. 
 
@@ -334,23 +313,13 @@ Using the last theorem the problem of computing degree $d$ Hurwitz numbers can b
 	\deq{	\cZ\C[S_d]&=\{x\in\C[S_d]\ \big|\ yx=xy\tforall y\in\C[S_d]\}}
 \end{definition}
 
+\pause
+
 \begin{definition}
 	A \emph{class function} on $S_d$ is a map $\a\colon S_d\to\C$ \st  $\a(\inv hgh)=\a(h)$ $\forall h\in S_d$.\\ Let $\C_\tclass$ denote the vector space of class functions on $S_d$, together with the following Hermitian inner product
 	\deq{(\a,\b):=\frac1{d!}\sum_{\s\in S_d}\a(\s)\overline{\b(\s)}=\frac1{d!}\sum_{C\subset S_d}|C|\a(C)\overline{\b(C)} \label{eq:inner-prod-cfunc}}
  	where $\a,\b\in \C_\tclass$ and $\sum_C$ runs over the conjugacy classes of $S_d$. 
 \end{definition}
-
-\end{frame}
-
-\begin{frame}
-
-\begin{lemma}
-	\deq{\cZ\C[S_d]=\left\{\sum_{\s\in S_d}\a(\s)\s\ \big|\  \a\in\C_\tclass\right\}}
-\end{lemma}
-
-For $\q\prt d$, denote $C_\q$ the conjugacy class in $S_d$ of elements of cycle type $\q$. It follows from the lemma that we can find a basis of $\cZ\C[S_d]$ by considering functions $\a_\q$ taking value 1 on elements of $C_\q$ and zero otherwise
-\deq{\cZ\C[S_d]=\bigoplus_{\q\prt d}\la c_\q\ra_\C \twhere c_\q:=\sum_{\s_\in S_d}\a_\q(s)\s=\sum_{\s\in C_\q}\s}
-Another important basis of $\cZ\C[S_d]$ is obtained taking as basis of $\cclass$ the characters of irreducible representations. 
 
 \end{frame}
 
@@ -363,26 +332,38 @@ Representations of $S_d$ are described by their characters
 	\deq{\c_\r(\s):=\tr(\r(\s))}
 \end{definition}
 
-For complex representation we have the following fundamental result
+\pause
+
 \begin{theorem}
-	In terms of the inner product defined in $\cclass$ the characters of the irreducible representations of $S_d$ are orthonormal:
+	In terms of the inner product defined in $\cclass$ the characters of the complex irreducible representations of $S_d$ are orthonormal:
 	\deq{(\c_{\r_1},\c_{\r_2})=\begin{cases}1\tif \r_1\cong \r_2\\0\tif \r_1\not\cong \r_2\end{cases}}
 	where $\r_1,\r_2$ are irreducible representations.  
+\end{theorem}
+
+\pause
+
+\begin{theorem}
+	To each partition $\l\prt d$ corresponds a unique irreducible representation $V_\l$ of $S_d$. The corresponding character, denoted $\c^\l$, is given by Frobenius formula.
 \end{theorem}
 
 \end{frame}
 
 \begin{frame}
 
-\begin{theorem}
-	To each partition $\l\prt d$ corresponds a unique irreducible representation $V_\l$ of $S_d$. The corresponding character, denoted $\c^\l$, is given by Frobenius formula.
-\end{theorem}
+For $\q,\l\prt d$, denote $C_\q$ the conjugacy class in $S_d$ of elements of cycle type $\q$, and define the following elements in $\cZ\C[S_d]$:
+\deq{c_\q:=\sum_{\s\in C_\q}\s
+	\tand
+	e_\l:=\sum_{\s\in S_d}\c^\l(\s)\s}
+Then one can prove
+\deq{\cZ\C[S_d]=\bigoplus_{\q\prt d}\la c_\q\ra_\C=\bigoplus_{\l\prt d}\la e_\l\ra_\C}
 
-By dimensional arguments, characters of irreducible representations form another basis of $\cclass$. Moreover, 
-\deq{\cZ\C[S_d]=\bigoplus_{\l\prt d}\la e_\l\ra_\C\twhere e_\l:=\sum_{\s\in S_d}\c^\l(\s)\s}
+\pause
+
 From characters orthogonality (and the fact that $\overline{\c^\l}=\c^\l$) we get
 \deq{e_{\l_i}\cdot e_{\l_j}=\begin{cases}e_{\l_i}\tif e_{\l_i}=e_{\l_j}\\0\quad\text{otherwise}\end{cases}}
 for this reason $\{e_\l\}$ is called \emph{idempotent basis} of $\cZ\C[S_d]$.
+
+\pause
 
 The formulas for the change of basis are given by the characters
 \deq{e_\l=\frac{\dim \l}{d!}\sum_{\q\prt d}\c^\l(C_\q)c_\q
@@ -401,7 +382,7 @@ Recall that
 \deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac{|M^\bullet|}{d!}}
 
 For $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ where $i\in\Z_{\geq1}$ appears $a_i$ times in the partition, $\sum_i ia_i=d$, the size of the centralizer of $C_\q$ is given by\\[-8pt]
-\deq{\fz(\q)=\frac{d!}{|C_\q|}=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}\\[-8pt]
+\deq{\fz(\q)=\frac{d!}{|C_\q|}=\prod_{i=1}^{\ell(\q)} a_i! \,i^{a_i}}\\[-8pt]\pause
 
 \begin{definition}
 	Let $d\in\Z_{\geq1}$, $\q\prt d$. We define the \emph{kommutator} to be the element
@@ -416,18 +397,18 @@ For $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ where $i\in\Z_{\geq1}$ appears $a_i
 
 \begin{frame}
 
+\begin{theorem}
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\frac1{d!}[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}}
+	where $[c_e]\mathfrak K^gc_{\q_n}\cdots c_{\q_2}c_{\q_1}$ denotes the coefficient of $c_e$ in $\mathfrak K^gc_{\q_n}\ldots c_{\q_2}c_{\q_1}$.
+\end{theorem}
+
 By changing basis from the conjugacy basis to the idempotent basis we get
 
 \begin{theorem}[Burnside's Character Formula]
-	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{i=1}^nf_{C_j}(\l)}
-	where
-	\deq{f_{C_i}(\l):=|C_i|\frac{\c^\l(C_i)}{\dim \l}}
-	and $C_i:=C_{\q_i}$.
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{i=1}^nf_{C_i}(\l)}
+	where $C_i:=C_{\q_i}$ and
+	\deq{f_{C_\q}(\l):=|C_\q|\frac{\c^\l(C_\q)}{\dim \l}}
 \end{theorem}
-
-Recall that from the change of basis formula, 
-\deq{c_\q=\sum_{\l\prt d}f_{C_\q}(\l)e_\l}
-From Burnside's formula we see that such coefficients $f_{C_\q}(\l)$ for the change of basis correspond to the contribution of the ramification profile $\q$ to the disconnected Hurwitz numbers. 
 
 \end{frame}
 
@@ -435,30 +416,30 @@ From Burnside's formula we see that such coefficients $f_{C_\q}(\l)$ for the cha
 
 \begin{frame}
 
-In the following we will restrict ourselves to the case of $g=0$. Recall that there are some degeneration formulas which allows to express all the Hurwitz numbers in terms of those for $g=0$.  
+In the following we will restrict ourselves to the case of $g=0$. Recall that there are some degeneration formulas which allows to express all the Hurwitz numbers in terms of those for $g=0$.\pause  
 
 Since Riemann-Hurwitz formula fixes $h$ in terms of $(d,\q_1,\ldots,\q_n)$, we denote
-\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_j}(\l)}
+\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_i}(\l)}\pause
 Let $b$ be the number of branch points which have simple ramification, \ie $\q=(2)$. We denote
 \vspace{-10pt}
-\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b})&:=H^\bullet_d(\q_1,\ldots,\q_{n-b},\overbrace{(2),\ldots,(2)}^{\text{$b$ times}})\\
-&=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{n-b}f_{C_j}(\l)}
-where $f_2:=f_{C_{(2)}}$. Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
+\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{m})&:=H^\bullet_d(\q_1,\ldots,\q_{m},\overbrace{(2),\ldots,(2)}^{\text{$b$ times}})\\
+&=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)}
+where $f_2:=f_{C_{(2)}}$.\pause Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
 
 \end{frame}
 
 \begin{frame}
 
-Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. Fix $m\in\Z_{\geq0}$ to be the number of branch points with non-simple ramification profile.
+Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions.\pause Fix $m\in\Z_{\geq0}$ to be the number of branch points with non-simple ramification profile.
 
 \begin{definition}
-	Let $\{p_{i,j}\}$ and $q$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. We define the \emph{Hurwitz potential} to be
-	\deq{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)\label{eq:Hur-pot-0}}
-	where for $\q=(l_1,\ldots,l_k)\prt d$ we defined
-	\deq{p^{\q}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\vspace{-7pt}}
+	Let $\{p_{i,j}\}$, $q$ and $z$ be some variables, $i\in\{1,\ldots,m\}$, $j\in\Z_{\geq0}$. We define the \emph{Hurwitz potential} to be
+	\deq{\fH^\bullet(p_{i,j},q,z):=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}H_{d,b}^\bullet(\q_1,\ldots,\q_m)}
+	where for $\q_i=(l_1,\ldots,l_k)\prt d$ we defined
+	\deq{p^{\q_i}_i:=(p_{i,1}^{l_1}+\cdots+p_{i,d}^{l_1})\cdots(p_{i,1}^{l_k}+\cdots+p_{i,d}^{l_k})\vspace{-7pt}}
 	We also introduce the \emph{modified Hurwitz potential} to be
 	\vspace{-2pt}
-	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m):=\sum_{b=0}^\infty\frac{z^b}{b!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
+	\deq{\fh^\bullet_d(\q_q,\ldots,\q_m,z):=\sum_{b=0}^\infty\frac{z^b}{b!}H^\bullet_{d,b}(\q_1,\ldots,\q_m)}
 	Analogous definitions hold for the \emph{(modified) connected Hurwitz potential} $\fH^\circ$ and $\fh^\circ$. 
 \end{definition}
 
@@ -466,15 +447,9 @@ Rather than considering the different Hurwitz numbers separately, it worth to co
 
 \begin{frame}
 
-For fixed $i$, the polynomials of the form $p^\q$ for all partitions $\q\prt d$ form a basis for the space of all homogeneous polynomials of degree $d$ in $d$ variables with rational coefficients. They are called \emph{power sum polynomials}. Therefore, given $\fH^\bullet$, it can be expanded uniquely as in \eqref{eq:Hur-pot-0} giving all the Hurwitz numbers. 
+For fixed $i$, the polynomials of the form $p^\q$ for all partitions $\q\prt d$ form a basis for the space of all homogeneous polynomials of degree $d$ in $d$ variables with rational coefficients. They are called \emph{power sum polynomials}. Therefore, given $\fH^\bullet$, it can be expanded uniquely giving all the Hurwitz numbers. \pause
 
-We see that in the expansion of the Hurwitz potential
-\begin{itemize}
-	\item $q$ keeps track of the degree $d$
-	\item $z$ keeps track of the number of simple ramification points (we divided by $b!$ in order to not distinguish between them)
-	\item $i$ indicizes the non-simple ramification points
-	\item $j$ gives the ramification profiles
-\end{itemize}
+\vspace{\baselineskip}
 
 The first advantage of considering generating function in place of the single Hurwitz numbers is 
 
@@ -487,11 +462,11 @@ The first advantage of considering generating function in place of the single Hu
 
 \begin{frame}
 
-In order to simplify the notation, in the following we denote $\c^\l_\q:=\c^\l(C_\q)$. 
+In order to simplify the notation, in the following we denote $\c^\l_\q:=\c^\l(C_\q)$. \pause
 
 For any $\l\prt d$, we have the following relation, which can be regarded as corollary of Frobenius formula
 \deq{s_\l(p_1,\ldots,p_d)=\frac1{d!}\sum_{\q\prt d}\c^\l_\q|C_\q|p^\q}
-where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneous polynomial of degree $d$. Putting formulas together we get
+where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneous polynomial of degree $d$. \pause Putting formulas together we get
 \deq{
 	&\fH^\bullet(p_{i,j},q,z)=\\
 	&\quad=\sum_{d,b=0}^\infty q^d\frac{z^b}{b!}\sum_{\q_1\prt d}\cdots\sum_{\q_{m}\prt d}p_1^{\q_1}\cdots p_{m}^{\q_{m}}\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{m}f_{C_i}(\l)\\
@@ -506,9 +481,9 @@ where $s_\l$ is the \emph{Schur polynomial} associated to $\l$, it is homogeneou
 The case $m=2$ corresponds to the so called \emph{double Hurwitz numbers}, which are the ones we are interested in
 \deq{\fH^\bullet(\{p_j,p_j'\},q,z)&=\sum_{d=0}^\infty q^d\sum_{\l\prt d} e^{z f_2(\l)}s_\l(p_1,\ldots,p_d)s_\l(p'_1,\ldots,p'_d)\\
 	&=\sum_{\l}q^{|\l|} e^{z f_2(\l)}s_\l(P)s_\l(P')}
-We denoted $P:=\{p_1,p_2,\ldots\}$ and $P':=\{p'_1,p'_2,\ldots\}$ (of course $s_\l$ depends only on the first $|\l|$ variables of each set). For $m=2$ we also have
+We denoted $P:=\{p_1,p_2,\ldots\}$ and $P':=\{p'_1,p'_2,\ldots\}$ (of course $s_\l$ depends only on the first $|\l|$ variables of each set). \pause For $m=2$ we also have
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}\\
-	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}}
+	\fh^\bullet_d(\q,\q',z)&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}}\pause
 Before moving on, notice that for double Hurwitz numbers the Riemann - Hurwitz formula gives
 \deq{2h=b+2-\ell(\q)-\ell(\q')}
 
@@ -526,8 +501,8 @@ Given a partition $\l$, define its rank $r$ to be the length of the diagonal of 
 We call $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ and $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ the \emph{Frobenius notation} and the  \emph{modified Frobenius notation} of the partition respectively, where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. 
 
 \vspace{-1.5em}
-\[\vspace{-2pt}\begin{matrix}\includegraphics[width=10em]{../figures/FH-pag-51.pdf} &\hspace{-0pt}\raisebox{1.2cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&5\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&5.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
-\vspace{-1.5em}
+\[\vspace{-2pt}\begin{matrix}\includegraphics[width=10em]{../figures/FH-pag-51.pdf} &\hspace{-0pt}\raisebox{1.2cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&6\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&6.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
+\vspace{-1.5em}\pause
 
 \begin{lemma}[Frobenius formula for $C_{(2)}$]
 	\vspace{-6pt}
@@ -539,7 +514,7 @@ We call $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ and $\b
 \begin{frame}
 
 From Frobenius formula and $|C_{(2)}|=\begin{pmatrix}d\\2\end{pmatrix}$ it follows that 
-\deq{f_2(\l)=\frac{|C_{(2)}|}{\dim \l}\c^\l(C_{(2)})=\frac12\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}
+\deq{f_2(\l)=\frac{|C_{(2)}|}{\dim \l}\c^\l(C_{(2)})=\frac12\sum_{i=1}^r((a'_i)^2-(b'_i)^2)}\pause
 
 Draw the Young diagram of $\l$ rotated by $135^\circ$ over the real line with opposite orientation as in the picture. 
 
@@ -551,11 +526,11 @@ Draw the Young diagram of $\l$ rotated by $135^\circ$ over the real line with op
 
 Suppose that $\l$ is made of $k=\ell(\l)$ cycles of lengths $\{\l_1,\ldots,\l_k\}$ where $\l_1\geq\l_2\geq\ldots$. Now consider the ordered set $\{\ti\l_i\}_{i\in\Z_{\geq0}}=\{\l_1,\ldots,\l_k,0,0,\ldots\}$ ending with infinitely many zeros. Then it is clear that black stones are placed in correspondence to elements of 
 \deq{\fS_\bullet(\l):=\{\ti\l_i-i+1/2\}\subset\Z+\frac12}
-and white stones in correspondence to elements of $\fS_\circ(\l):=(\Z+\frac12)\setminus\fS_\bullet(\l)$. Moreover, the coefficients in the modified Frobenius notation are given by
+and white stones in correspondence to elements of $\fS_\circ(\l):=(\Z+\frac12)\setminus\fS_\bullet(\l)$. \pause  Moreover, the coefficients in the modified Frobenius notation are given by
 \deq{\{a'_i\}&=\fS_\bullet^+(\l):=\fS_\bullet\cap(\Z_{\geq0}+1/2)\\
-	\{b'_i\}&=\fS_\circ^-(\l):=\fS_\circ\cap(\Z_{\leq0}-1/2)=(\Z_{\leq0}-1/2)\setminus\fS_\bullet(\l)}
+	\{b'_i\}&=\fS_\circ^-(\l):=\fS_\circ\cap(\Z_{\leq0}-1/2)=(\Z_{\leq0}-1/2)\setminus\fS_\bullet(\l)}\pause
 Hence we obtained
-\deq{f_2(\l)=\sum_{k\in\fS_\bullet^+}\frac{k^2}2-\sum_{k\in\fS_\circ^-}\frac{k^2}2}
+\deq{f_2(\l)=\sum_{k\in\fS_\bullet^+}\frac{k^2}2-\sum_{k\in\fS_\circ^-}\frac{k^2}2}\pause
 Notice also that
 \deq{|\l|=\l_1+\cdots+\l_k=a_1'+\cdots+a_k'+b_1'+\cdots+b_k'=\sum_{k\in\fS_\bullet^+} k-\sum_{k\in\fS_\circ^-}k}
 
@@ -573,7 +548,7 @@ where $S=\{s_1>s_2>\dots\}\subset\Z+\frac12$ is a subset \st both
 \deq{S^+=S\setminus\Big(\Z_{\leq0}-\frac12\Big)\tand S^-=\Big(\Z_{\leq0}-\frac12\Big)\setminus S}
 are finite. We equip $\hiw$ with the inner product $(-,-)$ in which the basis $\{v_S\}$ (for all possible choices of $S$) is orthonormal. 
 
-\end{definition}
+\end{definition}\pause
 
 For our purposes $S$ is identified with $\fS_\bullet(\l)$ defined before, we denote by $v_\l$ the vector in $\hiw$ corresponding to $S=\fS_\bullet(\l)$. In this case $S^+=\fS_\bullet^+$ and $S^-=\fS_\circ^-$, and finiteness condition simply corresponds to the fact that we have finitely many black stones on the left of the origin and finitely many white stones on the right or the origin, which is automatic for $\fS_\bullet(\l)$. 
 
@@ -586,19 +561,19 @@ For our purposes $S$ is identified with $\fS_\bullet(\l)$ defined before, we den
 For all $k\in\Z+\frac12$ define the operators $\p_k$ and $\p_k^*$ on $\hiw$ by 
 \deq{\p_k(v):=\und k\V v\tand (v',\p^*_kv)=(\p_kv',v)}
 where $v,v'\in\hiw$.
-\end{definition}
+\end{definition}\pause
 
 From the definitions we have
 \deq{\p_j\p_k^*+\p_k^*\p_j=\d_{jk}
 	\tand
 	\p_j\p_k+\p_k\p_j=\p_j^*\p_k^*+\p_k^*\p_j^*=0}
-which are known as \emph{fermionic commutation relations}. 
+which are known as \emph{fermionic commutation relations}. \pause
 
 These operators are related to the usual creation and annihilation operators for the \emph{Fermi sea}, by identifying black stones with electrons and white stones with empty energy levels (but in physical literature $\p_k$ and $\p_k^*$ are exchanged). 
 
-Finiteness condition amounts to considering state which are finite energy excitation of the vacuum state. We identify the vacuum of the Fermi sea with the vector $\vac:=\und{-\frac12}\V\und{-\frac32}\V\und{-\frac52}\V\ldots$, where all stones are black (resp. white) on the right (resp. left) of the origin.
+Finiteness condition amounts to considering state which are finite energy excitation of the vacuum state. \pause
 
-All vectors in $\hiw$ can be obtained from $\vac$ by applying $\p_k$ and $\p_k^*$ a finite number of times: $\vac$ is cyclic. 
+We define \emph{vacuum} the vector $\vac:=\und{-\frac12}\V\und{-\frac32}\V\und{-\frac52}\V\ldots$, where all stones are black (resp. white) on the right (resp. left) of the origin. This is exactly the vacuum in the Fermi sea model.
 
 \end{frame}
 
@@ -609,25 +584,23 @@ All vectors in $\hiw$ can be obtained from $\vac$ by applying $\p_k$ and $\p_k^*
 Introduce the \emph{normal ordered product}
 \deq{\no{\p_j\p_k^*}\ \ :=\begin{cases}\p_j\p_k^*\quad&k>0\\-\p_k^*\p_j\quad&k<0\end{cases}}
 
-\end{definition}
+\end{definition}\pause
 
-For $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 if we have a black (resp. white) stone in $k$ and zero otherwise.\\
-For $j\neq k$ the normal ordered product is the ordinary product due to the fermionic commutation relation $\no{\p_j\p_k^*}\ =\p_j\p_k^*=-\p_k^*\p_j$.\\
-The effect of $\no{\p_j\p_k^*}\ $ for $j\neq k$ is to take the black stone in $k$ and move it to the position $j$, unless there is no black stone in $k$ or the position $j$ is already occupied: in such cases it gives the zero vector. \\
-Finiteness condition ensures that any operator of the form $\sum_{j,k}a_{jk}\no{\p_j\p_k^*}$ is well defined for any choice of the coefficients $a_{j,k}$. \\
-The assignement $E_{jk}\mapsto\ \no{\p_j\p_k^*}$ can be understood as a projective representation of $\fgl(V)$ on $\hiw$. 
+For $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 (resp. -1) if we have a black (resp. white) stone in $k$ and zero otherwise.\\
+For $j\neq k$ the normal ordered product is the ordinary product due to the fermionic commutation relation $\no{\p_j\p_k^*}\ =\p_j\p_k^*=-\p_k^*\p_j$.\\\pause
+The effect of $\no{\p_j\p_k^*}\ $ for $j\neq k$ is to take the black stone in $k$ and move it to the position $j$, unless there is no black stone in $k$ or the position $j$ is already occupied: in such cases it gives the zero vector. \\\pause
+Finiteness condition ensures that any operator of the form $\sum_{j,k}a_{jk}\no{\p_j\p_k^*}$ is well defined for any choice of the coefficients $a_{j,k}$.
 
 \end{frame}
 
 \begin{frame}
 
 \begin{definition}
-\vspace{-5pt}
 \deq{\cF_2=\sum_{k\in\Z+\frac12}\frac{k^2}2\no{\p_k\p_k^*}}
 \end{definition}
 
 It satisfies\\[-15pt]
-\deq{\cF_2v_\l=f_2(\l)v_\l}
+\deq{\cF_2v_\l=f_2(\l)v_\l}\vspace*{-\baselineskip}\pause
 
 \begin{definition}
 We define the following operators, called \emph{energy operator} and \emph{charge operator} respectively\\[-15pt]
@@ -636,7 +609,7 @@ We define the following operators, called \emph{energy operator} and \emph{charg
 	C:=\sum_{k\in\Z+1/2}\no{\p_k\p_k^*}}
 \end{definition}
 
-The physical interpretation of these operators is obvious when we regard a black stone at position $k>0$ as an electron of energy $k$ and charge $+1$ and a white stone at position $k<0$ as a positron of energy $-k$ and charge $-1$. 
+The physical interpretation of these operators is obvious when we regard a black stone at position $k>0$ as an electron of energy $k$ and charge $+1$ and a white stone at position $k<0$ as a positron of energy $-k$ and charge $-1$. \pause
 
 We have\\[-15pt]
 \deq{Hv_\l=|\l|v_\l}
@@ -646,10 +619,10 @@ We have\\[-15pt]
 \begin{frame}
 
 For the charge operator we have 
-\deq{Cv_S=(|S^+|-|S^-|)v_s}
+\deq{Cv_S=(|S^+|-|S^-|)v_s}\pause
 Suppose $Cv_S=c\,v_S$, then $|S^+|=|S^-|+c$. Pick $k\in S$, $k<\min (S^-)$, this means that the stone at $k$ and all those on its right are black. Then $|S^+|=|S^-|+c$ implies that $k=s_{-(k-1/2)+c}$. Hence
-\deq{c=\lim_{i\to+\infty}\Big(s_i+i-\frac12\Big)}
-In particular, all vectors corresponding to Young diagrams ($S=\fS_\bullet(\l)$) have zero charge. Conversely, any vector of zero charge can be obtained from a Young diagram by taking the partition $\l_i=s_i+i-\frac12$ (omitting the infinitely many $\l_i$ which vanish). We denote by $\hiwz$ the subspace of $\hiw$ of zero charge. From this we get that\\[-15pt]
+\deq{c=\lim_{i\to+\infty}\Big(s_i+i-\frac12\Big)}\pause
+In particular, all vectors corresponding to Young diagrams ($S=\fS_\bullet(\l)$) have zero charge. Conversely, any vector of zero charge can be obtained from a Young diagram by taking the partition $\l_i=s_i+i-\frac12$ (omitting the infinitely many $\l_i$ which vanish). We denote by $\hiwz$ the subspace of $\hiw$ of zero charge. \pause From this we get that\\[-15pt]
 \deq{\{v_\l\,\big|\,\l\prt d\}}
 is a basis for the subspace of $\hiwz$ of energy $d$. Considering all positive values of $d$ we get a basis of the whole charge zero subspace $\hiwz$. 
 
@@ -660,13 +633,13 @@ is a basis for the subspace of $\hiwz$ of energy $d$. Considering all positive v
 \begin{definition}
 For $n\in\Z_{\neq0}$ define\\[-18pt]
 \deq{\a_n:=\sum_{k\in\Z+\frac12}\no{\p_{k-n}\p^*_k}}
-\end{definition}
+\end{definition}\pause
 
-It satisfy $\a_n\und k=\und{k-n}$ and the \emph{Heisenberg commutation relations}
+They satisfy $\a_n\und k=\und{k-n}$ and the \emph{Heisenberg commutation relations}
 \deq{[\a_n,\a_m]=n\d_{n+m,0}}
-From the definition it follows that $\a_n$ and $\a_{-n}$ are adjoint for every $n\in\Z_{\neq0}$.
+From the definition it follows that $\a_n$ and $\a_{-n}$ are adjoint for every $n\in\Z_{\neq0}$.\pause
 
-The effect of this operator in a certain configuration of stones (or electrons) is the following. Pick one and move it to the right by $n$ positions. If the new position is a white stone, make it black and replace the initial black stone by a white one. If the new position is occupied by a black stone, then the operator gives the zero vector (Pauli principle). Then repeat this for all black stones and sum all the resulting vectors to give the final state. Finiteness condition ensures that this operation is well defined. 
+The effect of this operator in a certain configuration of stones (or electrons) is the following. Pick one and move it to the right by $n$ positions. If the new position is a white stone, make it black and replace the initial black stone by a white one. If the new position is occupied by a black stone, then the operator gives the zero vector (Pauli principle). Then repeat this for all black stones and sum all the resulting vectors to give the final state.
 
 \end{frame}
 
@@ -677,9 +650,9 @@ For any partition $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt|\q|$ define
 \deq{\a_{\q}:=\prod_{i=1}^{\ell(\q)}\a_{\q_i}
 	\tand
 	\a_{-\q}:=\prod_{i=1}^{\ell(\q)}\a_{-\q_i}} 
-\end{definition}
+\end{definition}\pause
 
-The Heisenberg commutation relation ensures that the ordering of the multiplied operators is not relevant and also that $\a_\q$ and $\a_{-\q}$ are adjoint. Note also that $\a_{\q}$ (resp. $\a_{-\q}$) decreases (resp. increases) the energy of states by $|\q|$. Moreover, it is possible to prove that 
+The Heisenberg commutation relation ensures that the ordering of the multiplied operators is not relevant and also that $\a_\q$ and $\a_{-\q}$ are adjoint. \pause Note also that $\a_{\q}$ (resp. $\a_{-\q}$) decreases (resp. increases) the energy of states by $|\q|$. \pause Moreover, it is possible to prove that 
 \deq{\{\a_{-\q}\vac\,\big|\,\q\prt d\}}
 is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner product $(-,-)$.
 
@@ -688,8 +661,8 @@ is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner 
 \begin{frame}
 
 The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that 
-\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
-where $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. 
+\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l/\l')-1}v_{\l'}}
+where $r(\l/\l')$ is the number of rows of $\l$ touched by $\l/\l'$. Indeed moving a black stone corresponds to remove a skew hook of length $n$ from the partition (the strip of length 2 in the picture).
 
 \[\includegraphics[width=\textwidth]{../figures/J-fig-2.pdf}\]
 
@@ -698,11 +671,11 @@ where $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$.
 \begin{frame}
 
 The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. Then graphically we can see that 
-\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
-where $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. Compare to
+\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l/\l')-1}v_{\l'}}
+where $r(\l/\l')$ is the number of rows of $\l$ touched by $\l/\l'$. Compare to
 \begin{lemma}[\emph{Murnaghan-Nakayama rule}]
-	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}\c^{\l'}_\q}
-\end{lemma}
+	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l/\l')-1}\c^{\l'}_\q}
+\end{lemma}\pause
 Using these identities we get that for any two partitions $\l$ and $\q$ \st $|\l|=|\q|$ 
 \deq{\a_{\q} v_\l=\c_\q^\l v_\emptyset}
 and taking the adjoint
@@ -722,24 +695,24 @@ For $\q=\{\q_1,\ldots,\q_{\ell(\q)}\}\prt d$ and $\q'=\{\q'_1,\ldots,\q'_{\ell(\
 	&=\sum_{\l\prt d}\c_{\q'}^\l\big(\vac,\a_\q \cF_2^b v_\l\big)
 	=\sum_{\l\prt d}f_2(\l)^b\c_{\q'}^\l\big(\vac,\a_\q v_\l\big)\\
 	&=\sum_{\l\prt d}\c_\q^\l f_2(\l)^b\c_{\q'}^\l\big(\vac,\vac\big)
-	=\sum_{\l\prt d}\c_{\q}^{\l}f_2(\l)^b\c_{\q'}^{\l}}
-and then
+	=\sum_{\l\prt d}\c_{\q}^{\l}f_2(\l)^b\c_{\q'}^{\l}}\pause
+Therefore
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}f_2(\l)^b\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q \cF_2^b\a_{-\q'}\big\ra}
-where the \emph{correlator} of the operator $A$ is defined by $\la A\ra:=(v_\emptyset,Av_\emptyset)$. Similarly
-\deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra}
+where the \emph{correlator} of the operator $A$ is defined by $\la A\ra:=(v_\emptyset,Av_\emptyset)$. \pause Similarly
+\deq{\fh^\bullet_d(\q,\q',z)&=\frac1{\fz(\q)\fz(\q')}\sum_{\l\prt d}\c^\l_{\q}e^{z f_2(\l)}\c^\l_{\q'}=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra}
 
 \end{frame}
 
 \begin{frame}
 
-To rewrite the Hurwitz potential we should be able to recover the Schur polynomials from the half infinite wedge formalism. 
+To rewrite the Hurwitz potential we should be able to recover the Schur polynomials from the half infinite wedge formalism. \pause
 
 \begin{definition}
 Given a sequence $t=(t_1,t_2,\ldots)$ define
 \deq{\G_\pm(t)=\exp\Bigg(\sum_{n=1}^\infty t_n\a_{\pm n}\Bigg)}
 \end{definition}
 
-Note that $\G_+(t)$ and $\G_-(t)$ are adjoint. 
+Note that $\G_+(t)$ and $\G_-(t)$ are adjoint. \pause
 \begin{lemma}
 	Consider a set of variables $P=(p_1,p_2,\ldots)$ and denote $p^{(k)}=p_1^k+p_2^k+\cdots$. Then\\[-15pt]
 	\deq{\G_-\bigg(p^{(1)},\frac{p^{(2)}}2,\frac{p^{(3)}}3,\cdots\bigg)\vac=\sum_\l s_\l(P)v_\l}
@@ -753,13 +726,13 @@ Introduce the following abbreviations
 \deq{\G_+:=\G_+\bigg(p^{(1)},\frac{p^{(2)}}2,\frac{p^{(3)}}3,\cdots\bigg)
 	\tand
 	\G_-:=\G_-\bigg(p'^{(1)},\frac{p'^{(2)}}2,\frac{p'^{(3)}}3,\cdots\bigg)}
-where $P=(p_1,p_2,\ldots)$, $P'=(p'_1,p'_2,\ldots)$. 
+where $P=(p_1,p_2,\ldots)$, $P'=(p'_1,p'_2,\ldots)$. \pause
 Using the lemma we have
 \deq{&\big(\vac,\G_+q^He^{z \cF_2}\G_-\vac\big)
 	=\sum_{\l,\l'}s_\l(P)s_{\l'}(P')\big(v_\l,q^He^{z \cF_2}v_{\l'}\big)\\
 	&\qquad=\sum_{\l,\l'}q^{|\l'|}s_\l(P)e^{z f_2(\l')}s_{\l'}(P')\big(v_\l,v_{\l'}\big)
-	=\sum_{\l}q^{|\l|}s_\l(P)e^{z f_2(\l)}s_{\l}(P')}
-so
+	=\sum_{\l}q^{|\l|}s_\l(P)e^{z f_2(\l)}s_{\l}(P')}\pause
+Hence
 \deq{\fH^\bullet(\{p_j,p_j'\},q,z)=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
 
 \end{frame}
@@ -768,8 +741,8 @@ so
 
 Summarizing, we obtained the following formulas
 \deq{H^\bullet_{d,b}(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q \cF_2^b\a_{-\q'}\big\ra\\
-	\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra\\
-	\fH^\bullet(\{p_j,p_j'\},q,z)&=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}
+	\fh^\bullet_d(\q,\q',z)&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra\\
+	\fH^\bullet(\{p_j,p_j'\},q,z)&=\big\la\G_+q^He^{z \cF_2}\G_-\big\ra}\pause
 From this expression it was shown that the Hurwitz potential $\fH^\bullet$ is the $\w$-function for the Toda lattice hierarchy of Ueno and Takasaki, implying (infinitely) many recursive relations on $\fH^\bullet$. More about this in a forthcoming seminar!
 \end{frame}
 
@@ -777,65 +750,18 @@ From this expression it was shown that the Hurwitz potential $\fH^\bullet$ is th
 
 \begin{frame}
 
-Introducing other operators it is possible to rewrite the previous correlators in such a way that their explicit computation is much simplified. In order to simplify the notation, denote $E_{ij}=\ \no{\p_j\p_k^*}$\ .
-
 \begin{definition}
 	For $r\in\Z$ define\\[-15pt]
 	\deq{\cE_r(z):=\sum_{k\in\Z+\frac12}e^{z(k-r/2)}E_{k-r,k}+\frac{\d_{r,0}}{\varsigma(z)}}
-	where $\varsigma(z):=e^{z/2}-e^{-z/2}$.
-\end{definition}
+	where $E_{ij}=\ \no{\p_j\p_k^*}$ and $\varsigma(z):=e^{z/2}-e^{-z/2}$.
+\end{definition}\pause
 
 The exponent $r/2$ in the definition is used in order to have
 \deq{\cE_r(z)^*=\cE_{-r}(z)}
 The operators $\cE$ satisfy the following commutation relation
 \deq{[\cE_a(z),\cE_b(w)]=\varsigma(\det\left[\begin{smallmatrix}a&z\\b&w\end{smallmatrix}\right])\cE_{a+b}(z+w)}
 The operators $\cE$ specialize to the standard bosonic operators on $\hiw$
-\deq{\a_k=\cE_k(0)\tcomma k\neq0}
-
-\end{frame}
-
-\begin{frame}
-
-Let's explain the meaning of the additional term arising when $r=0$. We would like to have an operator which acts as
-\deq{\und k\mapsto e^{zk}\und{k}}
-and the natural candidate is 
-\deq{\sum_{k\in\Z+\frac12}e^{zk}\p_{k}\p_k^*}
-However applying it to the vacuum the second definition gives for $\Re z>0$
-\deq{\sum_{k\in\Z_{\leq0}-\frac12}e^{zk}=e^{-z/2}\sum_{k\in\Z_{\leq0}}e^{zk}=\frac{e^{-z/2}}{1-e^{-z}}=\frac1{\varsigma(z)}}
-and diverges for $\Re z=0$. So we regularize
-\deq{\sum_{k\in\Z+\frac12}e^{zk}\p_{k}\p_k^*=\sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\sum_{k\in\Z_{\leq0}-\frac12}e^{zk} \quad\mapsto\quad \sum_{k\in\Z+\frac12}e^{zk}E_{k,k}+\frac1{\varsigma(z)}}
-For $r\neq0$ we don't have any problem since $E_{k-r,k}=\p_{k-r}\p_k^*$.
-
-\end{frame}
-
-\begin{frame}
-
-\begin{definition}
-	For $k\in\Z_{>0}$ (re)define operators $\cF_k$ and $\cP_k$ by
-	\deq{\cF_k=\frac{\cP_k}{k!}=[z^k]\cE_0(z)}
-	where $[z^k]\cE_0(z)$ stands for the coefficient of $z^k$ in $\cE_0(z)$. 
-\end{definition}
-
-\begin{lemma}
-	For $\l$ partition
-	\deq{\cP_k v_\l={\bf p}_k(\l)v_\l}
-	where $\l=(\l_1,\ldots,\l_k,0,0,\ldots)$ and
-	\deq{{\bf p}_k(\l)&=\sum_{i=1}^\infty\bigg[\Big(\l_i-i+\frac12\Big)^k-\Big(-i+\frac12\Big)^k\bigg]+(1-2^{-k})\z(-k)\\
-		&=\sum_{i\in\fS_\bullet^+}{i^k}-\sum_{i\in\fS_\circ^-}{i^k}+(1-2^{-k})\z(-k)}
-	where $\z$ is the Riemann zeta function.
-\end{lemma}
-
-\end{frame}
-
-\begin{frame}
-
-The meaning of the term $(1-2^{-k})\z(-k)$ is as before, that is we would like to have
-\deq{\sum_{i=1}^\infty\Big(\l_i-i+\frac12\Big)^k}
-but if we consider the partition $\emptyset$ we get the a divergent contribution.
-
-Since $\z(-2)=0$ we get that the new definition of $\cF_2$ coincides with the previous one.
-
-The last formula we need is 
+\deq{\a_k=\cE_k(0)\tcomma k\neq0}\vspace*{-\baselineskip}\pause
 \begin{lemma}
 	For $n\in\Z_{\geq1}$
 	\deq{e^{z\cF_2}\a_{-n}e^{-z\cF_2}=\cE_{-n}(nz)}
@@ -848,8 +774,8 @@ The last formula we need is
 Using $\cF_2\vac=0$ we have
 \deq{\fh^\bullet_d(\q,\q')&=\frac1{\fz(\q)\fz(\q')}\big\la\a_\q e^{z\cF_2}\a_{-\q'}\big\ra
 	=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\a_{\q_i}\prod_{j=1}^{\ell(\q')}\big(e^{z\cF_2}\a_{-\q'_j}e^{-z\cF_2}\big)\ra\\
-	&=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\cE_{\q_i}(0)\prod_{j=1}^{\ell(\q')}\cE_{-\q'_j}(z\q'_j)\big\ra}
-Using the commutation relation for the operators $\cE$ it is possible to compute the correlator in the previous formula by moving the operators with negative energy on the right and those of positive energy on the left. Then only operators of zero energy survive, so we get a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\cE_0(n_1z)\cE_0(n_2z)\cdots$ for some positive integers $m_1,m_2,\ldots,n_1,n_2,\ldots$.
+	&=\frac1{\fz(\q)\fz(\q')}\big\la\prod_{i=1}^{\ell(\q)}\cE_{\q_i}(0)\prod_{j=1}^{\ell(\q')}\cE_{-\q'_j}(z\q'_j)\big\ra}\pause
+Using the commutation relation for the operators $\cE$ it is possible to compute the correlator in the previous formula by moving the operators with negative energy on the right and those of positive energy on the left. Then only operators of zero energy survive, so we get a sum of terms of the form $\vars(m_1z)\vars(m_2z)\cdots\cE_0(n_1z)\cE_0(n_2z)\cdots$ for some positive integers $m_1,m_2,\ldots,n_1,n_2,\ldots$. \pause
 Now recall
 \deq{
 	\cE_0(nz)=\sum_{k\in\Z+\frac12}e^{nzk}E_{k-r,k}+\frac1{\vars(nz)}}  

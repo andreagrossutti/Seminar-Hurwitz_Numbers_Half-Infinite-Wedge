@@ -111,7 +111,7 @@ We obtained that a degree $d$ map $f\colon X\to Y$ between \cpt\ connected \rss\
 Conversely:
 
 \begin{theorem}[{\cite[Thm. 7.2.2]{CM}}]
-	Let $Y$ be a \rs\ of genus $g$, $\F$ a monodromy representation of type $(g,d,\q_1,\ldots,\q_n)$, $B=\{b_1,\ldots,b_n\}\subset Y$ a finite subset. Then exists a $y_0$-labelled \holo\ map of \rs\ covering $Y$ with branch locus $B$ whose associated monodromy is $F$. Such map is unique up to isomorphisms of $y_0$-labelled maps. 
+	Let $Y$ be a \rs\ of genus $g$, $\F$ a monodromy representation of type $(g,d,\q_1,\ldots,\q_n)$, $B=\{b_1,\ldots,b_n\}\subset Y$ a finite subset. Then exists a $y_0$-labelled \holo\ map of \rs\ covering $Y$ with branch locus $B$ whose associated monodromy is $\F$. Such map is unique up to isomorphisms of $y_0$-labelled maps. 
 \end{theorem}
 \begin{proof}[Sketch of proof]
 	In the proof of this result the Riemann's Existence theorem is fundamental. We construct explicitly the topological space $X_0$ and the covering $f^0\colon X^0\to Y\setminus B$ in such a way that the map $f\colon X\to Y$ given by the Riemann's Existence theorem has the desired monodomy representation. 
@@ -262,7 +262,7 @@ Then we have the following
 By changing basis from the conjugacy basis to the idempotent basis we get
 
 \begin{theorem}[Burnside's Character Formula {\cite[Thm. 9.3.1]{CM}}]
-	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{i=1}^nf_{C_j}(\l)}
+	\deq{H^\bullet_{h\overset d\to g}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2-2g}\prod_{i=1}^nf_{C_i}(\l)}
 	where
 	\deq{f_{C_i}(\l):=|C_i|\frac{\c^\l(C_i)}{\dim \l}}
 	and $C_i:=C_{\q_i}$.
@@ -280,9 +280,9 @@ In the following we will restrict ourselves to the case of $g=0$. Recall that th
 For $g=0$ the Riemann-Hurwitz formula implies
 \deq[eq:RHgenus0]{2h-2=-2d+nd-\sum_{i=1}^n\ell(\q_i)}
 and since this fixes $h$ in terms of $(d,\q_1,\ldots,\q_n)$, we simply denote
-\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_j}(\l)}
+\deq{H^\bullet_d(\q_1,\ldots,\q_n):=H^\bullet_{h\overset d\to 0}(\q_1,\ldots,\q_n)=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}\prod_{i=1}^nf_{C_i}(\l)}
 Let $b$ be the number of branch points which have simple ramification, \ie $\q=(2)$. We denote
-\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b}):=H^\bullet_d(\q_1,\ldots,\q_{n-b},\underbrace{(2),\ldots,(2)}_{\text{$b$ times}})=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{n-b}f_{C_j}(\l)}
+\deq{H^\bullet_{d,b}(\q_1,\ldots,\q_{n-b}):=H^\bullet_d(\q_1,\ldots,\q_{n-b},\underbrace{(2),\ldots,(2)}_{\text{$b$ times}})=\sum_{\l\prt d}\left(\frac{\dim\l}{d!}\right)^{2}f_2(\l)^b\prod_{i=1}^{n-b}f_{C_i}(\l)}
 where $f_2:=f_{C_{(2)}}$. Analogous definitions hold for connected Hurwitz numbers, replacing $H^\bullet$ with $H^\circ$. 
 
 Rather than considering the different Hurwitz numbers separately, it worth to collect them together into generating functions. Fix $m\in\Z_{\geq0}$ to be the number of branch points with non-simple ramification profile. Then
@@ -346,7 +346,7 @@ Here we want to rewrite $f_2(\l)$ in a different way using Frobenius formula. We
 
 For a given partition $\l$, define its rank $r$ to be the length of the diagonal of its Young diagram, and let $a_i$ and $b_i$ be the number of boxes to the right and below of the $i$-th box of the diagonal, reading from the upper right to the lower left. Then $\begin{pmatrix}a_1a_2\ldots a_n\\b_1b_2\ldots b_n\end{pmatrix}$ is called \emph{Frobenius notation} of the partition. 
 
-\[\begin{matrix}\includegraphics[]{../figures/FH-pag-51.pdf} &\raisebox{1.5cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&5\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&5.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
+\[\begin{matrix}\includegraphics[]{../figures/FH-pag-51.pdf} &\raisebox{1.5cm}{$\begin{matrix*}[l]\l=(10,9,9,4,4,4,1)\\\text{Frobenius notation }\begin{pmatrix}9&7&6&0\\2&3&4&6\end{pmatrix}\\\text{modified Frobenius notation }\begin{pmatrix}9.5&7.5&6.5&0.5\\2.5&3.5&4.5&6.5\end{pmatrix}\end{matrix*}$}\end{matrix}\]
 
 Let also define the \emph{modified Frobenius notation} to be $\begin{pmatrix}a'_1a'_2\ldots a'_n\\b'_1b'_2\ldots b'_n\end{pmatrix}$ where $a'_i=a_i+1/2$ and $b'_i=b_i+1/2$. Then
 	
@@ -404,7 +404,7 @@ Note also that all the vectors in $\hiw$ can be obtained from $\vac$ by applying
 
 Introduce the \emph{normal ordered product}
 \deq{\no{\p_j\p_k^*}\ \ :=\begin{cases}\p_j\p_k^*\quad&k>0\\-\p_k^*\p_j\quad&k<0\end{cases}}
-For $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 if we have a black (resp. white) stone in $k$ and zero otherwise. For $j\neq k$ the normal ordered product is the ordinary product due to the fermionic commutation relation $\no{\p_j\p_k^*}\ =\p_j\p_k^*=-\p_k^*\p_j$. The effect of $\no{\p_j\p_k^*}\ $ for $j\neq k$ is to take the black stone in $k$ and move it to the position $j$, unless there is no black stone in $k$ or the position $j$ is already occupied: in such cases it gives the zero vector. Finiteness condition ensures that any operator of the form $\sum_{j,k}a_{jk}\no{\p_j\p_k^*}$ is well defined for any choice of the coefficients $a_{j,k}$. Note that the assignement $E_{jk}\mapsto\ \no{\p_j\p_k^*}$ can be understood as a projective representation of $\fgl(V)$ on $\hiw$. 
+For $k>0$ (resp. $k<0$), $\no{\p_k\p_k^*}$ gives 1 (resp. $-1$) if we have a black (resp. white) stone in $k$ and zero otherwise. For $j\neq k$ the normal ordered product is the ordinary product due to the fermionic commutation relation $\no{\p_j\p_k^*}\ =\p_j\p_k^*=-\p_k^*\p_j$. The effect of $\no{\p_j\p_k^*}\ $ for $j\neq k$ is to take the black stone in $k$ and move it to the position $j$, unless there is no black stone in $k$ or the position $j$ is already occupied: in such cases it gives the zero vector. Finiteness condition ensures that any operator of the form $\sum_{j,k}a_{jk}\no{\p_j\p_k^*}$ is well defined for any choice of the coefficients $a_{j,k}$. Note that the assignement $E_{jk}\mapsto\ \no{\p_j\p_k^*}$ can be understood as a projective representation of $\fgl(V)$ on $\hiw$. 
 
 Now we can define the operator $\cF_2$ 
 \deq{\cF_2=\sum_{k\in\Z+\frac12}\frac{k^2}2\no{\p_k\p_k^*}}
@@ -456,10 +456,10 @@ is a basis for the subspace of $\hiwz$ of energy $d$, orthogonal \wrt the inner 
 The two bases of $\hiwz$ can be related as follows. Let $\l$ be any partition and $n\in\Z_{>0}$. From the following picture
 \[\includegraphics[width=\textwidth]{../figures/J-fig-2.pdf}\]
 we can see that 
-\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}v_{\l'}}
-where $\l'<\l$ means that $\l'_i<\l_i$ for all $i\leq\ell(\l)$ and $r(\l'/\l)$ is the number of rows of $\l'$ touched by $\l'/\l$. This is very similar to
+\deq{\a_{n}v_\l=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l/\l')-1}v_{\l'}}
+where $\l'<\l$ means that $\l'_i<\l_i$ for all $i\leq\ell(\l)$ and $r(\l/\l')$ is the number of rows of $\l'$ touched by $\l/\l'$. This is very similar to
 \begin{lemma}[\emph{Murnaghan-Nakayama rule} {\cite[Ex. 4.45]{FH}}]
-	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l'/\l)-1}\c^{\l'}_\q}
+	\deq{\c^\l_{\{(n),\q\}}=\sum_{\l'<\l\atop{\text{$\l/\l'$ skew hook}\atop{|\l/\l'|=n}}}(-1)^{r(\l/\l')-1}\c^{\l'}_\q}
 \end{lemma}
 Using these identities we get that for any two partitions $\l$ and $\q$ such that $|\l|=|\q|$ 
 \deq{\a_{\q} v_\l=\c_\q^\l v_\emptyset}
